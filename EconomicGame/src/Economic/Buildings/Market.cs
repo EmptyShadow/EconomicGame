@@ -8,6 +8,9 @@ namespace EconomicGame.src.Economic.Buildings
 {
     class Market : Building
     {
+        public Market(string name, uint buildingPeriod, uint cost) : base(name, buildingPeriod, cost)
+        {
 
+        }
     }
 }

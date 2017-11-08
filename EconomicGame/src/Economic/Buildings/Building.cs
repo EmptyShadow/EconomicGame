@@ -14,40 +14,90 @@ namespace EconomicGame.src.Economic.Buildings
         /// <summary>
         /// Название здания
         /// </summary>
-        string name;
+        protected string name;
 
         /// <summary>
         /// Общий период строительства
         /// </summary>
-        uint buildingPeriod;
+        protected uint buildingPeriod;
 
         /// <summary>
         /// Общая стоимость
         /// </summary>
-        uint cost;
+        protected uint cost;
 
         /// <summary>
         /// Прошедшее время с начала строительства
         /// </summary>
-        uint curBuildingPeriod;
-
-        /// <summary>
-        /// Плата за месяц
-        /// </summary>
-        uint costMonth;
+        protected uint curBuildingPeriod;
 
         /// <summary>
         /// Заморозка строительства. В этот период здание не строится и на него не
         /// расходуются денежные средства
         /// </summary>
-        bool freeze = false;
+        protected bool freeze = false;
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="name">Название здания</param>
+        /// <param name="buildingPeriod">Период строительства</param>
+        /// <param name="cost">Стоимость</param>
         public Building(string name, uint buildingPeriod, uint cost)
         {
             this.name = name;
             this.buildingPeriod = buildingPeriod;
             this.cost = cost;
             costMonth = buildingPeriod / cost;
+        }
+
+        /// <summary>
+        /// Название здания
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+
+        /// <summary>
+        /// Общий период строительства
+        /// </summary>
+        public uint BuldingPeriod
+        {
+            get
+            {
+                return buildingPeriod;
+            }
+        }
+
+        /// <summary>
+        /// Общая стоимость строительства
+        /// </summary>
+        public uint Cost
+        {
+            get
+            {
+                return cost;
+            }
+        }
+
+        /// <summary>
+        /// Плата за месяц строительства
+        /// </summary>
+        uint costMonth;
+
+        /// <summary>
+        /// Плата за месяц строительства
+        /// </summary>
+        public uint CostMonth
+        {
+            get
+            {
+                return costMonth;
+            }
         }
 
         /// <summary>
@@ -94,6 +144,29 @@ namespace EconomicGame.src.Economic.Buildings
         {
             // Если задержали строительство, то плановый период строительства увеличивается на один месяц
             buildingPeriod++;
+        }
+
+        public void NextStageBuilding()
+        {
+            curBuildingPeriod++;
+        }
+
+        /// <summary>
+        /// Остаточный период строительства
+        /// </summary>
+        /// <returns></returns>
+        public uint ResidualPeriodBuilding()
+        {
+            return buildingPeriod - curBuildingPeriod;
+        }
+
+        /// <summary>
+        /// Получить стоимость здания
+        /// </summary>
+        /// <returns></returns>
+        public virtual uint GetCurCost()
+        {
+            return costMonth * curBuildingPeriod;
         }
     }
 }

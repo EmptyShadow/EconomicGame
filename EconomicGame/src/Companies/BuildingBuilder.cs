@@ -19,9 +19,11 @@ namespace EconomicGame.src.Companies
         /// <param name="capital">Капитал фонда</param>
         public static void Build(Capital capital)
         {
+            // Проходим по всему списку зданий
             foreach(Building building in capital.Things.Buildings)
             {
-
+                // и пытаемся их построить
+                BuildBuilding(capital.Account, building);
             }
         }
 
@@ -32,7 +34,12 @@ namespace EconomicGame.src.Companies
         /// <param name="building">дом</param>
         private static void BuildBuilding(BankAccount account, Building building)
         {
-
+            // Если здание не построенно и не замороженно и платеж от фонда прошел
+            if (!building.IsBuild() && !building.IsFreeze && account.Withdraw(building.CostMonth) != 0)
+            {
+                // , то построить
+                building.NextStageBuilding();
+            }
         }
     }
 }
