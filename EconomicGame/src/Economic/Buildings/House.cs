@@ -11,5 +11,9 @@ namespace EconomicGame.src.Economic.Buildings
     /// </summary>
     class House : Building
     {
+        public House(string name, uint buildingPeriod, uint cost) : base(name, buildingPeriod, cost)
+        {
+
+        }
     }
 }
