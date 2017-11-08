@@ -23,6 +23,6 @@ namespace EconomicGame.src.Persons
         /// </summary>
         public BuildingFund Fund { get; set; }
 
-
+        /// абстрактные методы, которые должен выполнять управляющий
     }
 }

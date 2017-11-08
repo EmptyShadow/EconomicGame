@@ -14,7 +14,7 @@ namespace EconomicGame.src.Economic
         /// <summary>
         /// Баланс
         /// </summary>
-        private decimal accBal;
+        private uint accBal;
 
         public BankAccount()
         {
@@ -24,12 +24,47 @@ namespace EconomicGame.src.Economic
         /// <summary>
         /// Получить баланс
         /// </summary>
-        public decimal Balance
+        public uint Balance
         {
             get
             {
                 return accBal;
             }
         }
+
+        /// <summary>
+        /// Вложение средств
+        /// </summary>
+        /// <param name="deposite"></param>
+        /// <returns>Новый баланс</returns>
+        public uint Deposite(uint deposite)
+        {
+            // Делаем вклад
+            accBal += deposite;
+            // Сообщаем баланс
+            return accBal;
+        }
+
+        /// <summary>
+        /// Снять со счета деньги
+        /// </summary>
+        /// <param name="bal"></param>
+        /// <returns>Вернется количество снятых сбережений или 0 если не достаточно средств</returns>
+        public uint Withdraw(uint bal)
+        {
+            // Если на счете достаточно средств
+            if (accBal > bal)
+            {
+                // ,то снимаем
+                accBal -= bal;
+                // и выводим
+                return bal;
+            } else
+            {
+                // Иначе возвращаем 0
+                return 0;
+            }
+        }
+
     }
 }
