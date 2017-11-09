@@ -29,6 +29,9 @@ namespace EconomicGame.src.Economic
             things = new Havings();
         }
 
+        /// <summary>
+        /// Получить счет в банке
+        /// </summary>
         public BankAccount Account
         {
             get
@@ -37,6 +40,9 @@ namespace EconomicGame.src.Economic
             }
         }
 
+        /// <summary>
+        /// Получить имущество
+        /// </summary>
         public Havings Things
         {
             get

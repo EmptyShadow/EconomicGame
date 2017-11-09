@@ -16,5 +16,21 @@ namespace EconomicGame.src.Funds
         /// Капитал фонда
         /// </summary>
         Capital capital;
+
+        public BuildingFund()
+        {
+            capital = new Capital();
+        }
+
+        /// <summary>
+        /// Получить капитал
+        /// </summary>
+        public Capital GetCapital
+        {
+            get
+            {
+                return capital;
+            }
+        }
     }
 }

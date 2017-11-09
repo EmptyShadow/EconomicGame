@@ -18,7 +18,7 @@ namespace EconomicGame.src.Economic
         List<Building> buildings;
 
         /// <summary>
-        /// Конструктор пустого имущества
+        /// Конструктор имущества, в котором ничего нет
         /// </summary>
         public Havings()
         {
