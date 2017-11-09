@@ -37,8 +37,13 @@ namespace EconomicGame.src.Companies
             // Если здание не построенно и не замороженно и платеж от фонда прошел
             if (!building.IsBuild() && !building.IsFreeze && account.Withdraw(building.CostMonth) != 0)
             {
-                // , то построить
-                building.NextStageBuilding();
+                // генерируем случайное событие
+                ProbabilisticEvent probEvent = new ProbabilisticEvent();
+                if (probEvent.IsGood)
+                {
+                    // , то построить
+                    building.NextStageBuilding();
+                }
             }
         }
     }

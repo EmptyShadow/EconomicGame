@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EconomicGame.src.Economic;
+using EconomicGame.src.Economic.Buildings;
 
 namespace EconomicGame.src
 {
@@ -18,9 +20,24 @@ namespace EconomicGame.src
         /// </summary>
         private static Core instance;
 
+        /// <summary>
+        /// Жилые дома доступные для постройки
+        /// </summary>
+        Havings houses;
+
+        /// <summary>
+        /// Магазины доступные для постройки
+        /// </summary>
+        Havings markets;
+
+        /// <summary>
+        /// Настройки игрового процесса
+        /// </summary>
+        Settings settings;
+
         private Core()
         {
-            
+            // генерация настроек, коэффициентов, зданий
         }
 
         /// <summary>
@@ -40,6 +57,39 @@ namespace EconomicGame.src
                 instance = new Core();
                 // и вернуть
                 return instance;
+            }
+        }
+
+        /// <summary>
+        /// Получить настройки
+        /// </summary>
+        public Settings GetSettings
+        {
+            get
+            {
+                return settings;
+            }
+        }
+
+        /// <summary>
+        /// Получить на чтение список доступных жилых зданий
+        /// </summary>
+        public IReadOnlyCollection<Building> GetListHouses
+        {
+            get
+            {
+                return houses.GetListBuildings();
+            }
+        }
+
+        /// <summary>
+        /// Получить на чтение список доступных магазинов
+        /// </summary>
+        public IReadOnlyCollection<Building> GetListMarkets
+        {
+            get
+            {
+                return markets.GetListBuildings();
             }
         }
     }

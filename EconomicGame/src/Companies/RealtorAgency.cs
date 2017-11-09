@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace EconomicGame.src.Companies
 {
     /// <summary>
-    /// Риэлторское агентство, через которое происходит покупка зданий для строительства.
+    /// Риэлторское агентство, через которое происходит продажа квартир в жилых зданиях
     /// </summary>
     class RealtorAgency
     {
