@@ -15,6 +15,34 @@ namespace EconomicGame.src.Economic
         /// <summary>
         /// Здания входящие в имущество
         /// </summary>
-        public List<Building> Buildings { get; set; }
+        List<Building> buildings;
+
+        /// <summary>
+        /// Конструктор пустого имущества
+        /// </summary>
+        public Havings()
+        {
+            // Создаем списко зданий
+            buildings = new List<Building>();
+        }
+
+        /// <summary>
+        /// Добавить здание в список
+        /// </summary>
+        /// <param name="building"></param>
+        public void Add(Building building)
+        {
+            buildings.Add(building);
+        }
+
+        /// <summary>
+        /// Получить список зданий для чтения
+        /// </summary>
+        /// <returns></returns>
+        public IReadOnlyCollection<Building> ReadListBuildings()
+        {
+            // Вернуть колекцию списка для чтения
+            return buildings.AsReadOnly();
+        }
     }
 }

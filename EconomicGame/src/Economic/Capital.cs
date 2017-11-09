@@ -14,11 +14,35 @@ namespace EconomicGame.src.Economic
         /// <summary>
         /// Счет в банке, в котором лежат деньги
         /// </summary>
-        public BankAccount Account { get; set; }
+        BankAccount account;
 
         /// <summary>
         /// Собственность, имущество
         /// </summary>
-        public Havings Things { get; set; } 
+        Havings things;
+
+        public Capital()
+        {
+            // Создаем счет в банке
+            account = new BankAccount();
+            // Создаем списки имущества
+            things = new Havings();
+        }
+
+        public BankAccount Account
+        {
+            get
+            {
+                return account;
+            }
+        }
+
+        public Havings Things
+        {
+            get
+            {
+                return things;
+            }
+        }
     }
 }

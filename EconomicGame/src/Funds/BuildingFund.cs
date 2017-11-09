@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EconomicGame.src.Economic;
 
 namespace EconomicGame.src.Funds
 {
@@ -11,7 +12,9 @@ namespace EconomicGame.src.Funds
     /// </summary>
     class BuildingFund
     {
-        /// капитал = деньги + здания
-        /// 
+        /// <summary>
+        /// Капитал фонда
+        /// </summary>
+        Capital capital;
     }
 }

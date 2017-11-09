@@ -48,7 +48,8 @@ namespace EconomicGame.src.Economic.Buildings
             this.name = name;
             this.buildingPeriod = buildingPeriod;
             this.cost = cost;
-            costMonth = buildingPeriod / cost;
+            //  стоимостьпериод / строительства
+            costMonth = cost / buildingPeriod;
         }
 
         /// <summary>
@@ -148,6 +149,7 @@ namespace EconomicGame.src.Economic.Buildings
 
         public void NextStageBuilding()
         {
+            // Увеличить процесс постройки
             curBuildingPeriod++;
         }
 
@@ -166,6 +168,7 @@ namespace EconomicGame.src.Economic.Buildings
         /// <returns></returns>
         public virtual uint GetCurCost()
         {
+            // оплата за месяц * период строительства
             return costMonth * curBuildingPeriod;
         }
     }

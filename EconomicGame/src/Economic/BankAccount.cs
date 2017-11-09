@@ -16,8 +16,12 @@ namespace EconomicGame.src.Economic
         /// </summary>
         private uint accBal;
 
+        /// <summary>
+        /// Баланс поумолчанию
+        /// </summary>
         public BankAccount()
         {
+            // Нулевой баланс
             accBal = 0;
         }
 
