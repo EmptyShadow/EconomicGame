@@ -9,7 +9,7 @@ namespace EconomicGame.src.Economic.Buildings
     /// <summary>
     /// Магазин
     /// </summary>
-    class Market : Building
+    class Market : Building, ICloneable
     {
         /// <summary>
         /// Максимальный объем прибыли магазина
@@ -50,6 +50,18 @@ namespace EconomicGame.src.Economic.Buildings
             return base.GetCurCost();
         }
 
+        /// <summary>
+        /// Сделать копию объекта
+        /// </summary>
+        /// <returns></returns>
+        public override object Clone()
+        {
+            Market clone = new Market(name, buildingPeriod, cost, maxProfit, procentCostInc);
+            clone.costMonth = CostMonth;
+            clone.curBuildingPeriod = curBuildingPeriod;
+            clone.freeze = freeze;
+            return clone;
+        }
 
     }
 }

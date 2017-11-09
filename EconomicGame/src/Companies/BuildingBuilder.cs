@@ -20,7 +20,7 @@ namespace EconomicGame.src.Companies
         public static void Build(Capital capital)
         {
             // Проходим по всему списку зданий
-            foreach(Building building in capital.Things.Buildings)
+            foreach(Building building in capital.Things.GetListBuildings())
             {
                 // и пытаемся их построить
                 BuildBuilding(capital.Account, building);

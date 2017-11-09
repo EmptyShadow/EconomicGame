@@ -9,7 +9,7 @@ namespace EconomicGame.src.Economic.Buildings
     /// <summary>
     /// Здание, сооружение
     /// </summary>
-    class Building
+    class Building : ICloneable
     {
         /// <summary>
         /// Название здания
@@ -25,6 +25,11 @@ namespace EconomicGame.src.Economic.Buildings
         /// Общая стоимость
         /// </summary>
         protected uint cost;
+
+        /// <summary>
+        /// Плата за месяц строительства
+        /// </summary>
+        protected uint costMonth;
 
         /// <summary>
         /// Прошедшее время с начала строительства
@@ -84,11 +89,6 @@ namespace EconomicGame.src.Economic.Buildings
                 return cost;
             }
         }
-
-        /// <summary>
-        /// Плата за месяц строительства
-        /// </summary>
-        uint costMonth;
 
         /// <summary>
         /// Плата за месяц строительства
@@ -170,6 +170,19 @@ namespace EconomicGame.src.Economic.Buildings
         {
             // оплата за месяц * период строительства
             return costMonth * curBuildingPeriod;
+        }
+
+        /// <summary>
+        /// Сделать копию объекта
+        /// </summary>
+        /// <returns></returns>
+        public virtual Object Clone()
+        {
+            Building clone = new Building(name, buildingPeriod, cost);
+            clone.costMonth = CostMonth;
+            clone.curBuildingPeriod = curBuildingPeriod;
+            clone.freeze = freeze;
+            return clone;
         }
     }
 }

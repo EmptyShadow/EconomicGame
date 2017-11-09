@@ -39,7 +39,7 @@ namespace EconomicGame.src.Economic
         /// Получить список зданий для чтения
         /// </summary>
         /// <returns></returns>
-        public IReadOnlyCollection<Building> ReadListBuildings()
+        public IReadOnlyCollection<Building> GetListBuildings()
         {
             // Вернуть колекцию списка для чтения
             return buildings.AsReadOnly();

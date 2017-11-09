@@ -9,7 +9,7 @@ namespace EconomicGame.src.Economic.Buildings
     /// <summary>
     /// Жилой дом
     /// </summary>
-    class House : Building
+    class House : Building, ICloneable
     {
         /// <summary>
         /// Количество квартир
@@ -95,6 +95,21 @@ namespace EconomicGame.src.Economic.Buildings
         {
             // Стоимость / (количество кв. * среднее ков-во м^2 в кв.)
             return cost / (countСondo * averageSquareMetersCondos);
+        }
+
+        /// <summary>
+        /// Сделать копию объекта
+        /// </summary>
+        /// <returns></returns>
+        public override Object Clone()
+        {
+            House clone = new House(name, buildingPeriod, cost,countСondo, averageSquareMetersCondos);
+            clone.costMonth = CostMonth;
+            clone.curBuildingPeriod = curBuildingPeriod;
+            clone.freeze = freeze;
+            clone.costSquareMeter = costSquareMeter;
+            clone.countSoldCondo = countSoldCondo;
+            return clone;
         }
     }
 }
