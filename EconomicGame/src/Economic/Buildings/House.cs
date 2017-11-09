@@ -77,6 +77,7 @@ namespace EconomicGame.src.Economic.Buildings
             if (IsBuild())
             {
                 // , то стоимость зависит от не проданных квартир
+                // кол-во не проданных кв. * среднее кол-во м^2 в кв. * себестоимость м^2
                 return GetCountNotSoldCondos() * averageSquareMetersCondos * GetPrimeCostPerSquareMeter();
             }
             else
@@ -92,6 +93,7 @@ namespace EconomicGame.src.Economic.Buildings
         /// <returns></returns>
         public uint GetPrimeCostPerSquareMeter()
         {
+            // Стоимость / (количество кв. * среднее ков-во м^2 в кв.)
             return cost / (countСondo * averageSquareMetersCondos);
         }
     }
