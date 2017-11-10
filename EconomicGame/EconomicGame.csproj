@@ -58,6 +58,7 @@
     <Compile Include="src\Companies\BuildingBuilder.cs" />
     <Compile Include="src\Companies\RealtorAgency.cs" />
     <Compile Include="src\Core.cs" />
+    <Compile Include="src\Demand.cs" />
     <Compile Include="src\Economic\BankAccount.cs" />
     <Compile Include="src\Economic\Buildings\Building.cs" />
     <Compile Include="src\Economic\Buildings\House.cs" />
@@ -111,8 +112,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\Resourсes\Buildings\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

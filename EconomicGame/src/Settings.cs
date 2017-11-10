@@ -24,15 +24,26 @@ namespace EconomicGame.src
         /// <summary>
         /// Коэффициенты сезонов
         /// </summary>
-        double[] coefSeasons;
+        double[] coefsSeasons;
 
         /// <summary>
-        /// граница благоприятного события
+        /// Граница благоприятного события
         /// </summary>
         double borderFavorableOutcome;
 
-        public Settings()
+        /// <summary>
+        /// Создать настройки
+        /// </summary>
+        /// <param name="ordinaryDemandHouse">Обычный спрос на квартиры</param>
+        /// <param name="levelSalesMarket">Обычный уровень продаж в магазинах</param>
+        /// <param name="coefsSeasons">Коэффициенты сезонов</param>
+        /// <param name="borderFavorableOutcome">Граница благоприятного события</param>
+        public Settings(Demand ordinaryDemandHouse, double levelSalesMarket, double[] coefsSeasons, double borderFavorableOutcome)
         {
+            this.ordinaryDemandHouse = ordinaryDemandHouse;
+            this.levelSalesMarket = levelSalesMarket;
+            this.coefsSeasons = coefsSeasons;
+            this.borderFavorableOutcome = borderFavorableOutcome;
         }
 
         /// <summary>

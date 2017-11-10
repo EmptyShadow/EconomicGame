@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace EconomicGame.src
 {
     /// <summary>
-    /// Спрос
+    /// Спрос на вещь/товар
     /// </summary>
     class Demand
     {
