@@ -65,9 +65,13 @@
     <Compile Include="src\Economic\Capital.cs" />
     <Compile Include="src\Economic\Havings.cs" />
     <Compile Include="src\Funds\BuildingFund.cs" />
+    <Compile Include="src\Loader.cs" />
     <Compile Include="src\Persons\Bot.cs" />
     <Compile Include="src\Persons\FundManager.cs" />
     <Compile Include="src\Persons\Player.cs" />
+    <Compile Include="src\ProbabilisticEvent.cs" />
+    <Compile Include="src\Season.cs" />
+    <Compile Include="src\Settings.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,8 +112,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\Setting\Buildings\" />
-    <Folder Include="src\Setting\Loaders\" />
+    <Folder Include="src\Resourсes\Buildings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

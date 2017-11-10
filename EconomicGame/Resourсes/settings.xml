@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Настройки игрового процесса -->
+<settings>
+	<!-- Количество игроков -->
+	<countUsers>5</countUsers>
+	<!-- Количество ходов -->
+	<countStaps>32</countStaps>
+	<!-- Стартовый капитал -->
+	<startedCapital>3000000</startedCapital>
+	<!-- Обычный спрос на квартиры -->
+	<demand>
+		<!-- Стоимость квартиры -->
+		<cost>1000000</cost>
+		<!-- Количество купленных квартир -->
+		<count>1</count>
+	</demand>
+	<!-- Уровень продаж - это процент от максимального объема продаж в месяц -->
+	<levelSalesStore>70</levelSalesStore>
+</settings>

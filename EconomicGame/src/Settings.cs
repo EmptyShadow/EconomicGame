@@ -11,10 +11,15 @@ namespace EconomicGame.src
     /// </summary>
     class Settings
     {
-        // спрос
-        // добавить
-        // уровень продаж
-        // добавить
+        /// <summary>
+        /// Обычный спрос на квартиры
+        /// </summary>
+        Demand ordinaryDemandHouse;
+
+        /// <summary>
+        /// Обычный уровень продаж в магазинах
+        /// </summary>
+        double levelSalesMarket;
 
         /// <summary>
         /// Коэффициенты сезонов
