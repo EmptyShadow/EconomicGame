@@ -49,7 +49,7 @@ namespace EconomicGame.src
         static uint GetCountUsers(XmlElement element)
         {
             // Пытаемся получить значения в поле количестов игроков
-            uint countUsers = UInt32.Parse(element.GetAttribute("countUsers"));
+            uint countUsers = UInt32.Parse(element.GetAttribute("countUsers").Replace(" ", ""));
             return countUsers;
         }
 
@@ -60,7 +60,7 @@ namespace EconomicGame.src
         /// <returns></returns>
         static uint GetCountStaps(XmlElement element)
         {
-            uint countStaps = UInt32.Parse(element.GetAttribute("countStaps"));
+            uint countStaps = UInt32.Parse(element.GetAttribute("countStaps").Replace(" ", ""));
             return countStaps;
         }
 
@@ -72,7 +72,7 @@ namespace EconomicGame.src
         static uint GetStartedCapital(XmlElement element)
         {
             // Пытаемся получить значения в поле количестов игроков
-            uint capital = UInt32.Parse(element.GetAttribute("startedCapital"));
+            uint capital = UInt32.Parse(element.GetAttribute("startedCapital").Replace(" ", ""));
             return capital;
         }
 
@@ -110,7 +110,7 @@ namespace EconomicGame.src
         static double GetLevelSalesStore(XmlElement element)
         {
             // Пытаемся получить значения в поле уровень продаж
-            double levelSalesStore = Double.Parse(element.GetAttribute("levelSalesStore").Replace('.', ','));
+            double levelSalesStore = Double.Parse(element.GetAttribute("levelSalesStore").Replace('.', ',').Replace(" ", ""));
             return levelSalesStore / 100.0;
         }
 
@@ -122,10 +122,10 @@ namespace EconomicGame.src
         static double[] GetCoefsSeasons(XmlElement element)
         {
             double[] coefs = new double[4];
-            coefs[(int)Seasons.Winter - 1] = Double.Parse(element.GetAttribute("winter").Replace('.', ','));
-            coefs[(int)Seasons.Spring - 1] = Double.Parse(element.GetAttribute("spring").Replace('.', ','));
-            coefs[(int)Seasons.Summer - 1] = Double.Parse(element.GetAttribute("summer").Replace('.', ','));
-            coefs[(int)Seasons.Autumn - 1] = Double.Parse(element.GetAttribute("autumn").Replace('.', ','));
+            coefs[(int)Seasons.Winter - 1] = Double.Parse(element.GetAttribute("winter").Replace('.', ',').Replace(" ", ""));
+            coefs[(int)Seasons.Spring - 1] = Double.Parse(element.GetAttribute("spring").Replace('.', ',').Replace(" ", ""));
+            coefs[(int)Seasons.Summer - 1] = Double.Parse(element.GetAttribute("summer").Replace('.', ',').Replace(" ", ""));
+            coefs[(int)Seasons.Autumn - 1] = Double.Parse(element.GetAttribute("autumn").Replace('.', ',').Replace(" ", ""));
             return coefs;
         }
 
@@ -137,9 +137,11 @@ namespace EconomicGame.src
         static double GetBorderFavorableOutcome(XmlElement element)
         {
             // Пытаемся получить значения в поле границе благоприятных событий
-            double borderFavorableOutcome = Double.Parse(element.GetAttribute("borderFavorableOutcome").Replace('.', ','));
+            double borderFavorableOutcome = Double.Parse(element.GetAttribute("borderFavorableOutcome").Replace('.', ',').Replace(" ", ""));
             return borderFavorableOutcome % 1.0;
         }
+
+
 
 
     }

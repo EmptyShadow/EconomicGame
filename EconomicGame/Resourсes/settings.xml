@@ -6,7 +6,7 @@
 	<!-- Количество ходов -->
 	<countStaps>32</countStaps>
 	<!-- Стартовый капитал -->
-	<startedCapital>3000000</startedCapital>
+	<startedCapital>30 000 000</startedCapital>
 	<!-- Обычный спрос на квартиры -->
 	<demand>
 		<!-- Стоимость квартиры -->

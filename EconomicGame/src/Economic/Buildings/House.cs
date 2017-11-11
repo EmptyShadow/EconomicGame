@@ -98,6 +98,39 @@ namespace EconomicGame.src.Economic.Buildings
         }
 
         /// <summary>
+        /// Продать квартиры
+        /// </summary>
+        /// <param name="count">Количество квартир</param>
+        /// <returns>Сколько не продали квартир</returns>
+        public uint PrimeCondos(uint count)
+        {
+            // Увеличиваем число проданых квартир
+            countSoldCondo += count;
+            // Если продали больше квартир чем нужно
+            if (countSoldCondo > countСondo)
+            {
+                // , то такого не может быть
+                // сохраняем разницу перебора проданных квартир
+                uint razn = countSoldCondo - countСondo;
+                // восстанавливаем баланс проданных и существующих
+                countSoldCondo = countСondo;
+                // возращаем количество непроданных квартир
+                return razn;
+            }
+            // если квартир хватило, то продали все
+            return 0;
+        }
+
+        /// <summary>
+        /// Квартиры в доме продаются?
+        /// </summary>
+        /// <returns></returns>
+        public bool AreTheApartmentsBeingSold()
+        {
+            return (countSoldCondo < countСondo);
+        }
+
+        /// <summary>
         /// Сделать копию объекта
         /// </summary>
         /// <returns></returns>

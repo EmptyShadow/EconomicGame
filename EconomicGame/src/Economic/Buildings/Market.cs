@@ -12,7 +12,7 @@ namespace EconomicGame.src.Economic.Buildings
     class Market : Building, ICloneable
     {
         /// <summary>
-        /// Максимальный объем прибыли магазина
+        /// Максимальный объем прибыли магазина в месяц
         /// </summary>
         uint maxProfit;
 
