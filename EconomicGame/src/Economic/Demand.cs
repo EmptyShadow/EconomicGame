@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EconomicGame.src
+namespace EconomicGame.src.Economic
 {
     /// <summary>
     /// Спрос на вещь/товар

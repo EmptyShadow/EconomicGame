@@ -53,5 +53,5 @@ namespace EconomicGame.src
     /// <summary>
     /// Времена года
     /// </summary>
-    enum Seasons { Winter = 1, Summer, Spring, Autumn };
+    enum Seasons { Winter = 1, Spring, Summer, Autumn };
 }
