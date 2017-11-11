@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EconomicGame.src.Economic.Buildings
 {
+    [Serializable]
     /// <summary>
     /// Жилой дом
     /// </summary>
@@ -31,6 +32,8 @@ namespace EconomicGame.src.Economic.Buildings
         /// </summary>
         uint costSquareMeter;
 
+        public House() { }
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -45,6 +48,50 @@ namespace EconomicGame.src.Economic.Buildings
             this.averageSquareMetersCondos = averageSquareMetersCondos;
             // получение начальной стоимости квадратного метра
             costSquareMeter = GetPrimeCostPerSquareMeter();
+        }
+
+        /// <summary>
+        /// Получение или установление количество квартир в доме
+        /// </summary>
+        public uint CountCondo
+        {
+            get
+            {
+                return countСondo;
+            }
+            set
+            {
+                if (countСondo == 0 && value != 0)
+                {
+                    countСondo = value;
+                    if (cost != 0 && averageSquareMetersCondos != 0)
+                    {
+                        costSquareMeter = GetPrimeCostPerSquareMeter();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получение или установление среднего количества м^2 в квартире
+        /// </summary>
+        public uint AverageSquareMetersCondos
+        {
+            get
+            {
+                return averageSquareMetersCondos;
+            }
+            set
+            {
+                if (averageSquareMetersCondos == 0 && value != 0)
+                {
+                    averageSquareMetersCondos = value;
+                    if (cost != 0 && countСondo != 0)
+                    {
+                        costSquareMeter = GetPrimeCostPerSquareMeter();
+                    }
+                }
+            }
         }
 
         /// <summary>

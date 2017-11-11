@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EconomicGame.src.Economic.Buildings
 {
+    [Serializable]
     /// <summary>
     /// Магазин
     /// </summary>
@@ -21,6 +22,8 @@ namespace EconomicGame.src.Economic.Buildings
         /// </summary>
         double procentCostInc;
 
+        public Market() { }
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -32,6 +35,43 @@ namespace EconomicGame.src.Economic.Buildings
         public Market(string name, uint buildingPeriod, uint cost, uint maxProfit, double procentCostInc = 60) : base(name, buildingPeriod, cost)
         {
             this.maxProfit = maxProfit;
+            this.procentCostInc = procentCostInc / 100.0;
+        }
+
+        /// <summary>
+        /// Получение или установление максимального объема прибыли за месяц
+        /// </summary>
+        public uint MaxProfit
+        {
+            get
+            {
+                return maxProfit;
+            }
+            set
+            {
+                if (maxProfit == 0 && value != 0)
+                {
+                    maxProfit = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получение или установление процента увеличения стоимости магазина после постройки
+        /// </summary>
+        public double ProcentCostInc
+        {
+            get
+            {
+                return procentCostInc;
+            }
+            set
+            {
+                if (procentCostInc == 0.0 && value != 0.0)
+                {
+                    procentCostInc = value;
+                }
+            }
         }
 
         /// <summary>

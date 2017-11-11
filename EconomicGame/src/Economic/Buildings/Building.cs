@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EconomicGame.src.Economic.Buildings
 {
+    [Serializable]
     /// <summary>
     /// Здание, сооружение
     /// </summary>
@@ -42,6 +43,8 @@ namespace EconomicGame.src.Economic.Buildings
         /// </summary>
         protected bool freeze = false;
 
+        public Building() {}
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -66,6 +69,13 @@ namespace EconomicGame.src.Economic.Buildings
             {
                 return name;
             }
+            set
+            {
+                if (name == null)
+                {
+                    name = value;
+                }
+            }
         }
 
         /// <summary>
@@ -77,6 +87,17 @@ namespace EconomicGame.src.Economic.Buildings
             {
                 return buildingPeriod;
             }
+            set
+            {
+                if (buildingPeriod == 0 && value != 0)
+                {
+                    buildingPeriod = value;
+                    if (cost != 0)
+                    {
+                        costMonth = cost / buildingPeriod;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -87,6 +108,17 @@ namespace EconomicGame.src.Economic.Buildings
             get
             {
                 return cost;
+            }
+            set
+            {
+                if (cost == 0 && value != 0)
+                {
+                    cost = value;
+                    if (buildingPeriod != 0)
+                    {
+                        costMonth = cost / buildingPeriod;
+                    }
+                }
             }
         }
 
