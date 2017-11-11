@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace EconomicGame.src.Economic
 {
+    [Serializable]
     /// <summary>
     /// Спрос на вещь/товар
     /// </summary>
-    class Demand
+    public class Demand
     {
         /// <summary>
         /// Стоимость вещи
@@ -20,6 +21,8 @@ namespace EconomicGame.src.Economic
         /// </summary>
         uint countThings;
 
+        public Demand() { }
+
         /// <summary>
         /// Создать объект спроса
         /// </summary>
@@ -29,6 +32,42 @@ namespace EconomicGame.src.Economic
         {
             this.costThing = costThing;
             this.countThings = countThings;
+        }
+
+        /// <summary>
+        /// Получение или установление цена на вещь
+        /// </summary>
+        public uint CostThings
+        {
+            get
+            {
+                return costThing;
+            }
+            set
+            {
+                if (costThing == 0 && value != 0)
+                {
+                    costThing = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получение или установка количество вещей, которое будет куплено
+        /// </summary>
+        public uint CountThings
+        {
+            get
+            {
+                return countThings;
+            }
+            set
+            {
+                if (countThings == 0 && value != 0)
+                {
+                    countThings = value;
+                }
+            }
         }
 
         /// <summary>

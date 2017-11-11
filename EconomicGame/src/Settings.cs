@@ -8,10 +8,11 @@ using System.Reflection;
 
 namespace EconomicGame.src
 {
+    [Serializable]
     /// <summary>
     /// Настройки игрового процесса
     /// </summary>
-    class Settings
+    public class Settings
     {
         /// <summary>
         /// Количество игроков
@@ -48,6 +49,8 @@ namespace EconomicGame.src
         /// </summary>
         double borderFavorableOutcome;
 
+        public Settings() { }
+
         /// <summary>
         /// Создать настройки
         /// </summary>
@@ -82,13 +85,128 @@ namespace EconomicGame.src
         }
 
         /// <summary>
-        /// Получение коэффициента благоприятного события
+        /// Получить или установить количество игроков
+        /// </summary>
+        public uint CountPlayers
+        {
+            get
+            {
+                return countPlayers;
+            }
+            set
+            {
+                if (countPlayers == 0 && value != 0)
+                {
+                    countPlayers = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получить или установить продолжтельность игры(количество шагов)
+        /// </summary>
+        public uint CountStaps
+        {
+            get
+            {
+                return countStaps;
+            }
+            set
+            {
+                if (countStaps == 0 && value != 0)
+                {
+                    countStaps = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получить или установить стартовый капитал
+        /// </summary>
+        public uint StartCapital
+        {
+            get
+            {
+                return startCapital;
+            }
+            set
+            {
+                if (startCapital == 0 && value != 0)
+                {
+                    startCapital = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получить или установить обычный спрос на квартиры
+        /// </summary>
+        public Demand OrdinaryDemandHouse
+        {
+            get
+            {
+                return ordinaryDemandHouse;
+            }
+            set
+            {
+                if (ordinaryDemandHouse == null && value != null)
+                {
+                    ordinaryDemandHouse = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получить или установить обычный уровень продаж в магазинах
+        /// </summary>
+        public double LevelSalesMarket
+        {
+            get
+            {
+                return levelSalesMarket;
+            }
+            set
+            {
+                if (levelSalesMarket == 0.0 && value != 0.0)
+                {
+                    levelSalesMarket = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получить или установить коэффициенты сезонов
+        /// </summary>
+        public double[] CoefsSeasons
+        {
+            get
+            {
+                return coefsSeasons;
+            }
+            set
+            {
+                if (coefsSeasons == null && value != null && value.Length == 4)
+                {
+                    coefsSeasons = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получение или установление коэффициента благоприятного события
         /// </summary>
         public double BorderFavorableOutcome
         {
             get
             {
                 return borderFavorableOutcome;
+            }
+            set
+            {
+                if (borderFavorableOutcome == 0.0 && value != 0.0)
+                {
+                    borderFavorableOutcome = value;
+                }
             }
         }
 
@@ -117,7 +235,7 @@ namespace EconomicGame.src
             }
 
             // Удаляю последнюю запятую
-            emptyArt.Remove(emptyArt.Length - 1);
+            if (emptyArt != "") emptyArt.Remove(emptyArt.Length - 1);
             return emptyArt;
         }
     }

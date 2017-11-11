@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EconomicGame.src;
+using EconomicGame.src.Economic;
 
 namespace EconomicGame
 {
@@ -23,8 +25,8 @@ namespace EconomicGame
         public MainWindow()
         {
             InitializeComponent();
-            App app = new App();
-            app.Run();
+            Settings settings = ResourсesLoader.LoadSettings("./Resourсes/setting.xml");
+            Console.WriteLine(settings.ToString());
         }
     }
 }

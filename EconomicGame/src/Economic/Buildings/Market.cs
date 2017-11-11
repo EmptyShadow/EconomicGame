@@ -10,7 +10,7 @@ namespace EconomicGame.src.Economic.Buildings
     /// <summary>
     /// Магазин
     /// </summary>
-    class Market : Building, ICloneable
+    public class Market : Building, ICloneable
     {
         /// <summary>
         /// Максимальный объем прибыли магазина в месяц

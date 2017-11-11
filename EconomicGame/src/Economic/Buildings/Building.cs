@@ -10,7 +10,7 @@ namespace EconomicGame.src.Economic.Buildings
     /// <summary>
     /// Здание, сооружение
     /// </summary>
-    class Building : ICloneable
+    public class Building : ICloneable
     {
         /// <summary>
         /// Название здания
@@ -71,7 +71,7 @@ namespace EconomicGame.src.Economic.Buildings
             }
             set
             {
-                if (name == null)
+                if (name == null && value != null)
                 {
                     name = value;
                 }

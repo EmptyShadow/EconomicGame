@@ -10,7 +10,7 @@ namespace EconomicGame.src.Economic.Buildings
     /// <summary>
     /// Жилой дом
     /// </summary>
-    class House : Building, ICloneable
+    public class House : Building, ICloneable
     {
         /// <summary>
         /// Количество квартир

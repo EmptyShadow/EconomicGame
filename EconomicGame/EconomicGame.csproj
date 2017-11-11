@@ -66,7 +66,7 @@
     <Compile Include="src\Economic\Capital.cs" />
     <Compile Include="src\Economic\Havings.cs" />
     <Compile Include="src\Funds\BuildingFund.cs" />
-    <Compile Include="src\Loader.cs" />
+    <Compile Include="src\ResourсesLoader.cs" />
     <Compile Include="src\Persons\Bot.cs" />
     <Compile Include="src\Persons\FundManager.cs" />
     <Compile Include="src\Persons\Player.cs" />
