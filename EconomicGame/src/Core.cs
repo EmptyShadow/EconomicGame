@@ -35,9 +35,11 @@ namespace EconomicGame.src
         /// </summary>
         Settings settings;
 
-        private Core()
+        private Core(string nameSettings, string nameHouses, string nameMarkets)
         {
-            // генерация настроек, коэффициентов, зданий
+            settings = ResourсesLoaderXML.LoadSettings(nameSettings);
+            houses = ResourсesLoaderXML.LoadHavings(nameHouses);
+            markets = ResourсesLoaderXML.LoadHavings(nameMarkets);
         }
 
         /// <summary>
@@ -54,10 +56,29 @@ namespace EconomicGame.src
                     return instance;
                 }
                 // иначе загрузить
-                instance = new Core();
+                instance = Load(ResourсesLoaderXML.DEF_SETTINGS, ResourсesLoaderXML.DEF_HOUSES, ResourсesLoaderXML.DEF_MARKETS);
                 // и вернуть
                 return instance;
             }
+        }
+
+        /// <summary>
+        /// Загрузка ядра пользовательскими данными
+        /// </summary>
+        /// <param name="nameSettigs">Имя относительно Resources пользовательских настройкам</param>
+        /// <param name="nameHouses">Имя относительно Resources пользовательских жилых домов</param>
+        /// <param name="pahMarkets">Имя относительно Resources пользовательских магазинов</param>
+        /// <returns></returns>
+        public static Core Load(string nameSettigs, string nameHouses, string nameMarkets)
+        {
+            // Если ядро не загруженно
+            if (instance == null)
+            {
+                // , то загружаем пользовательскими данными
+                instance = new Core(nameSettigs, nameHouses, nameMarkets);
+            }
+            // , иначе возвращаем то, что установленно
+            return instance;
         }
 
         /// <summary>

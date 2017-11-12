@@ -1,0 +1,235 @@
+﻿using System;
+using System.Xml;
+using EconomicGame.src.Economic;
+using System.Xml.Serialization;
+using System.IO;
+
+namespace EconomicGame.src
+{
+    /// <summary>
+    /// Загрузчик ресурсов
+    /// Зданий
+    /// Имущества
+    /// Любого объекта для сереализации
+    /// </summary>
+    class ResourсesLoaderXML
+    {
+        /// <summary>
+        /// Директория файлов xml
+        /// </summary>
+        public const string RESOURCES = "./Resourсes/";
+        /// <summary>
+        /// Директория файлов xml
+        /// </summary>
+        public const string SETTINGS = "Settings/";
+        /// <summary>
+        /// Директория имущества
+        /// </summary>
+        public const string HEVINGS = "Hevings/";
+        /// <summary>
+        /// Имя файла настроек по умолчанию
+        /// </summary>
+        public const string DEF_SETTINGS = "default.settings.xml";
+        /// <summary>
+        /// Имя файла имущества жилых зданий по умолчанию
+        /// </summary>
+        public const string DEF_HOUSES = "default.houses.havings.xml";
+        /// <summary>
+        /// Имя файла имущества магазинов по умолчанию
+        /// </summary>
+        public const string DEF_MARKETS = "default.markets.havings.xml";
+
+        /// <summary>
+        /// Загрузка из файла xml
+        /// </summary>
+        /// <typeparam name="T">Тип объекта загрузки</typeparam>
+        /// <param name="name">Имя файла относительно Resources</param>
+        /// <returns></returns>
+        public static T Load<T>(string name)
+        {
+            string path = RESOURCES + name;
+            // Сериализация в формате XML для типа данных T
+            XmlSerializer formatter = new XmlSerializer(typeof(T));
+
+            // Переменная, в которую будут помещенны поля T
+            T type;
+
+            // Пытаемся получить настройки из потока файла
+            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            {
+                type = (T)formatter.Deserialize(fs);
+            }
+            return type;
+        }
+
+        /// <summary>
+        /// Сохранение файла xml
+        /// </summary>
+        /// <typeparam name="T">Тип объекта сохранения</typeparam>
+        /// <param name="name">Имя файла относительно Recources</param>
+        /// <param name="obj">Объект сохранения</param>
+        public static void Save<T>(string name, T obj)
+        {
+            // Сериализация в формате XML для типа данных T
+            XmlSerializer formatter = new XmlSerializer(typeof(T));
+
+            // дополняю путь к файлу расширение и именем объекта
+            string path = RESOURCES + name + "." + GetNameClass(obj) + ".xml";
+
+            // Используем новый поток файла для записи объекта
+            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, obj);
+            }
+        }
+
+        /// <summary>
+        /// Получить путь к файлу с окончанием имени файла (имя класса + .xml)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string GetPathWithTypeAndXML<T>(string path, T obj)
+        {
+            // получаю название класса
+            string nameT = GetNameClass(obj);
+            // получаю позицию последней точки в пути к файлу
+            int lastPoint = path.LastIndexOf('.');
+            // получаю концовку строки после точки
+            string xml = path.Substring(lastPoint);
+            // Если в конце есть расширение файла
+            if (xml == ".xml")
+            {
+                // то добавляем перед ним имя класса
+                path = path.Substring(0, lastPoint + 1) + nameT + xml;
+            }
+            else
+            {
+                // иначе добавляем и имя класса и расширение класа
+                path += "." + nameT + ".xml";
+            }
+            return path;
+        }
+
+        /// <summary>
+        /// Получить имя Класса
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string GetNameClass<T>(T obj)
+        {
+            // получаем полное имя класса
+            string nameT = obj.GetType().ToString().ToLower();
+            return GetNameClass(nameT);
+        }
+
+        /// <summary>
+        /// Получить имя класса
+        /// </summary>
+        /// <param name="fullPath"></param>
+        /// <returns></returns>
+        public static string GetNameClass(string fullPath)
+        {
+            // получаем позицию последней точки
+            int lastPoint = fullPath.LastIndexOf('.');
+            // извлекаю из полного имени краткое имя класса
+            return fullPath.Substring(lastPoint + 1);
+        }
+
+        /// <summary>
+        /// Загрузка настроек игрового процесса
+        /// </summary>
+        /// <param name="path">Путь к файлу настроек</param>
+        /// <returns></returns>
+        public static Settings LoadSettings(string name)
+        {
+            return Load<Settings>(SETTINGS + name);
+        }
+
+        /// <summary>
+        /// Загрузка настроек игрового процесса по умолчанию
+        /// </summary>
+        /// <returns></returns>
+        public static Settings LoadSettings()
+        {
+            return Load<Settings>(SETTINGS + DEF_SETTINGS);
+        }
+
+        /// <summary>
+        /// Сохранить настройки
+        /// </summary>
+        /// <param name="path">Имя файла относительно Resources</param>
+        /// <param name="settings">Настройки</param>
+        public static void SaveSettings(string name, Settings settings)
+        {
+            Save(SETTINGS + name, settings);
+        }
+
+        /// <summary>
+        /// Сохранить настройки поумолчанию
+        /// </summary>
+        /// <param name="settings">Настройки</param>
+        public static void SaveSettings(Settings settings)
+        {
+            Save(SETTINGS + "default", settings);
+        }
+
+        /// <summary>
+        /// Получить список жилых домов доступных в игре по умолчанию
+        /// </summary>
+        /// <returns></returns>
+        public static Havings LoadHavingsHouse()
+        {
+            return Load<Havings>(HEVINGS + "default.houses");
+        }
+
+        /// <summary>
+        /// Сохранить имущество жилых зданий по умолчанию
+        /// </summary>
+        /// <param name="houses"></param>
+        public static void SaveHavingsHouse(Havings houses)
+        {
+            Save(HEVINGS + "default.houses", houses);
+        }
+
+        /// <summary>
+        /// Сохранить имущество магазинов по умолчанию
+        /// </summary>
+        /// <param name="houses"></param>
+        public static void SaveHavingsMarket(Havings markets)
+        {
+            Save(HEVINGS + "default.markets", markets);
+        }
+
+        /// <summary>
+        /// Получить список магазинов доступных в игре по умолчанию
+        /// </summary>
+        /// <returns></returns>
+        public static Havings LoadHavingsMarkets()
+        {
+            return Load<Havings>(HEVINGS + "default.markets");
+        }
+
+        /// <summary>
+        /// Загрузить имущество из файла XML
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static Havings LoadHavings(string name)
+        {
+            return Load<Havings>(HEVINGS + name);
+        }
+
+        /// <summary>
+        /// Сохранить имущество в файл XML
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static void SaveHavings(string name, Havings havings)
+        {
+            Save(HEVINGS + name, havings);
+        }
+    }
+}

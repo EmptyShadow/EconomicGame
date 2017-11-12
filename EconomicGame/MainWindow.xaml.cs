@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using EconomicGame.src;
 using EconomicGame.src.Economic;
+using EconomicGame.src.Economic.Buildings;
 
 namespace EconomicGame
 {
@@ -25,8 +26,12 @@ namespace EconomicGame
         public MainWindow()
         {
             InitializeComponent();
-            Settings settings = ResourсesLoader.LoadSettings("./Resourсes/setting.xml");
-            Console.WriteLine(settings.ToString());
+            Havings markets = new Havings();
+            Market market1 = new Market("Example market 1", 1, 100000, 50000, 5);
+            Market market2 = new Market("Example market 2", 3, 1000000, 500000, 40);
+            markets.Add(market1);
+            markets.Add(market2);
+            ResourсesLoaderXML.SaveHavingsMarket(markets);
         }
     }
 }

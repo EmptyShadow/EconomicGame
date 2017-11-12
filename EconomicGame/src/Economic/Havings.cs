@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EconomicGame.src.Economic.Buildings;
+using System.Xml.Serialization;
 
 namespace EconomicGame.src.Economic
 {
+    [Serializable]
     /// <summary>
     /// Имущество, собственность
     /// </summary>
-    class Havings
+    public class Havings
     {
         /// <summary>
         /// Здания входящие в имущество
@@ -20,10 +22,54 @@ namespace EconomicGame.src.Economic
         /// <summary>
         /// Конструктор имущества, в котором ничего нет
         /// </summary>
-        public Havings()
+        public Havings() {}
+
+        /// <summary>
+        /// Создать имущество с начальным списком зданий
+        /// </summary>
+        /// <param name="building"></param>
+        public Havings(List<Building> building)
         {
-            // Создаем списко зданий
-            buildings = new List<Building>();
+            Building = building;
+        }
+
+        [XmlElement(Type = typeof(House)),
+    XmlElement(Type = typeof(Market))]
+        /// <summary>
+        /// Получить или установить имущество
+        /// </summary>
+        public List<Building> Building
+        {
+            get
+            {
+                return GetCopyBuildings();
+            }
+            set
+            {
+                // Если еще не был определен список зданий
+                if (buildings == null && value != null)
+                {
+                    //, то определяем его
+                    buildings = new List<Building>();
+                    foreach(Building building in value)
+                    {
+                        // получаем копии зданий, для того чтобы никто не мог изменить конфигурацию извне
+                        // и получить более выгодное в игре здание
+                        buildings.Add((Building)building.Clone());
+                    }
+                }
+            }
+        }
+
+        public List<Building> GetCopyBuildings()
+        {
+            if (buildings == null) return null;
+            List<Building> clone = new List<Buildings.Building>();
+            foreach(Building b in buildings)
+            {
+                clone.Add((Building)b.Clone());
+            }
+            return clone;
         }
 
         /// <summary>
@@ -32,6 +78,11 @@ namespace EconomicGame.src.Economic
         /// <param name="building"></param>
         public void Add(Building building)
         {
+            if (building == null) return;
+            if (buildings == null)
+            {
+                buildings = new List<Building>();
+            }
             buildings.Add(building);
         }
 

@@ -133,6 +133,7 @@ namespace EconomicGame.src.Economic.Buildings
             }
         }
 
+        
         /// <summary>
         /// Статус заморозки строительства здания
         /// </summary>
