@@ -34,7 +34,7 @@ namespace EconomicGame.src.Companies
         /// <param name="building">дом</param>
         private static void BuildBuilding(BankAccount account, Building building)
         {
-            // Если здание не построенно и не замороженно и платеж от фонда прошел
+            // Если здание не построенно и не замороженно его строительство и платеж от фонда прошел
             if (!building.IsBuild() && !building.IsFreeze && account.Withdraw(building.CostMonth) != 0)
             {
                 // генерируем случайное событие

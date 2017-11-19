@@ -26,13 +26,8 @@ namespace EconomicGame
         public MainWindow()
         {
             InitializeComponent();
-            List<Market> markets = new List<Market>()
-            {
-                new Market("Example market 1", 1, 100000, 50000, 5),
-                new Market("Example market 2", 3, 1000000, 500000, 40),
-            };
-            ResourсesLoaderXML.SaveHavingsMarket(markets);
-            //Core core = Core.Instanse;
+            Core core = Core.Instanse;
+            Console.WriteLine();
         }
     }
 }

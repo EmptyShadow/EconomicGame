@@ -130,7 +130,9 @@ namespace EconomicGame.src.Economic.Buildings
         }
 
         /// <summary>
-        /// Статус заморозки строительства здания
+        /// Статус заморозки строительства здания,
+        /// True - замороженно строитьльство
+        /// False - не замороженно
         /// </summary>
         public bool IsFreeze
         {
@@ -140,7 +142,7 @@ namespace EconomicGame.src.Economic.Buildings
                 if (IsBuild())
                 {
                     // ,то его невозможно заморозить
-                    return true;
+                    return false;
                 }
                 // иначе вернуть статус заморозки
                 return freeze;
