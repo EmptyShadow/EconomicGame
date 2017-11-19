@@ -18,7 +18,7 @@ namespace EconomicGame.src
         /// <summary>
         /// Экземпляр ядра приложения
         /// </summary>
-        private static Core instance;
+        static Core instance;
 
         /// <summary>
         /// Жилые дома доступные для постройки

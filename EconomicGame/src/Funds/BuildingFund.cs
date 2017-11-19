@@ -25,7 +25,7 @@ namespace EconomicGame.src.Funds
         /// <summary>
         /// Получить капитал
         /// </summary>
-        public Capital GetCapital
+        public Capital Capital
         {
             get
             {

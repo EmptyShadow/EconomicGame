@@ -4,15 +4,15 @@
   <CountStaps>36</CountStaps>
   <StartCapital>37000000</StartCapital>
   <OrdinaryDemandHouse>
-    <CostThings>1500000</CostThings>
+    <CostThings>30000</CostThings>
     <CountThings>1</CountThings>
   </OrdinaryDemandHouse>
   <LevelSalesMarket>0.7</LevelSalesMarket>
   <CoefsSeasons>
-    <double>0.2</double>
-    <double>0.3</double>
-    <double>0.4</double>
-    <double>0.5</double>
+    <double>0.8</double>
+    <double>0.9</double>
+    <double>1.0</double>
+    <double>1.3</double>
   </CoefsSeasons>
   <BorderFavorableOutcome>0.8</BorderFavorableOutcome>
 </Settings>

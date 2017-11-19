@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using EconomicGame.src.Economic;
 using EconomicGame.src.Economic.Buildings;
+using EconomicGame.src.Funds;
+using System.Windows;
+using EconomicGame.src.Utils;
 
 namespace EconomicGame.src.Companies
 {
@@ -17,13 +20,13 @@ namespace EconomicGame.src.Companies
         /// Построить дома
         /// </summary>
         /// <param name="capital">Капитал фонда</param>
-        public static void Build(Capital capital)
+        public static void Build(BuildingFund fund)
         {
             // Проходим по всему списку зданий
-            foreach(Building building in capital.Things.GetListBuildings())
+            foreach(KeyValuePair<string, Building> building in fund.Capital.Things.Building)
             {
                 // и пытаемся их построить
-                BuildBuilding(capital.Account, building);
+                BuildBuilding(fund.Capital.Account, building.Value);
             }
         }
 
@@ -45,6 +48,37 @@ namespace EconomicGame.src.Companies
                     building.NextStageBuilding();
                 }
             }
+        }
+
+        /// <summary>
+        /// Одобрить проект строительства и внести его в журнал имущества компании
+        /// </summary>
+        /// <param name="fund"></param>
+        /// <param name="building"></param>
+        /// <returns></returns>
+        public static bool ApproveTheBuilding(BuildingFund fund, KeyValuePair<Point, Building> building)
+        {
+            // Если на месте предполагаемой постройки нет здания
+            if (fund.Capital.Things.Building[ClassString.PointToString(building.Key)] == null)
+            {
+                // , то добавляем проект здания в журнал
+                fund.Capital.Things.Add(building.Key, building.Value);
+                // уведомляем соседей о будущей постройке
+                for (int i = (int)building.Key.X - 1; i <= building.Key.X - 1; i++)
+                    for (int j = (int)building.Key.Y - 1; j <= (int)building.Key.Y - 1; j++)
+                    {
+                        string p = ClassString.PointToString(new Point(i, j));
+                        Building b = fund.Capital.Things.Building[p];
+                        // Если сосед управляет другим бизнесом и он есть
+                        if (b != null && b.GetType() != building.Value.GetType())
+                        {
+                            // , то уведомляем
+                            b.CountNeighbors++;
+                        }
+                    }
+                return true;
+            }
+            return false;
         }
     }
 }

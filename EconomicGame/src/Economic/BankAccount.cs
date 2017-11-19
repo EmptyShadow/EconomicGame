@@ -51,9 +51,10 @@ namespace EconomicGame.src.Economic
 
         /// <summary>
         /// Снять со счета деньги
+        /// Вернется количество снятых сбережений или 0 если не достаточно средств
         /// </summary>
         /// <param name="bal"></param>
-        /// <returns>Вернется количество снятых сбережений или 0 если не достаточно средств</returns>
+        /// <returns></returns>
         public uint Withdraw(uint bal)
         {
             // Если на счете достаточно средств

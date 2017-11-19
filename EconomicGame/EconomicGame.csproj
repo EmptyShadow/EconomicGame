@@ -73,6 +73,10 @@
     <Compile Include="src\ProbabilisticEvent.cs" />
     <Compile Include="src\Season.cs" />
     <Compile Include="src\Settings.cs" />
+    <Compile Include="src\Utils\ClassString.cs" />
+    <Compile Include="src\Utils\ITest.cs" />
+    <Compile Include="src\Utils\ResultTest.cs" />
+    <Compile Include="src\Utils\TestAll.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

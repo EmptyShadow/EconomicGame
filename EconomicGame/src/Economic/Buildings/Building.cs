@@ -34,10 +34,20 @@ namespace EconomicGame.src.Economic.Buildings
         protected uint curBuildingPeriod;
 
         /// <summary>
+        /// Процент полученный за счет рекламы. Действует только месяц
+        /// </summary>
+        protected double percentageAdvertising = 0.0;
+
+        /// <summary>
         /// Заморозка строительства. В этот период здание не строится и на него не
         /// расходуются денежные средства
         /// </summary>
         protected bool freeze = false;
+
+        /// <summary>
+        /// Количество выгодных соседей
+        /// </summary>
+        public uint CountNeighbors { get; set; } = 0;
 
         public Building() {}
 
@@ -155,6 +165,20 @@ namespace EconomicGame.src.Economic.Buildings
                     // То меняем статус заморозки
                     freeze = value;
                 }
+            }
+        }
+        /// <summary>
+        /// Процент полученный за счет рекламы. Действует только месяц
+        /// </summary>
+        public double PercentageAdvertising
+        {
+            get
+            {
+                return percentageAdvertising;
+            }
+            set
+            {
+                percentageAdvertising = value;
             }
         }
 

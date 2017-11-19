@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace EconomicGame.src.Utils
 {
@@ -11,6 +12,15 @@ namespace EconomicGame.src.Utils
     /// </summary>
     class ClassString
     {
+        /// <summary>
+        /// Преобразовать точку к строке
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static string PointToString(Point p)
+        {
+            return "(" + p.X.ToString() + "," + p.Y.ToString() + ")";
+        }
         /// <summary>
         /// Получить путь к файлу с окончанием имени файла (имя класса + .xml)
         /// </summary>

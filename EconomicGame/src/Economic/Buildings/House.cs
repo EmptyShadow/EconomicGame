@@ -10,7 +10,7 @@ namespace EconomicGame.src.Economic.Buildings
     /// <summary>
     /// Жилой дом
     /// </summary>
-    public class House : Building, ICloneable
+    public class House : Building, ICloneable, IComparable
     {
         /// <summary>
         /// Количество квартир
@@ -190,6 +190,23 @@ namespace EconomicGame.src.Economic.Buildings
             clone.costSquareMeter = costSquareMeter;
             clone.countSoldCondo = countSoldCondo;
             return clone;
+        }
+
+        public int CompareTo(object obj)
+        {
+            House house = obj as House;
+            if (house != null)
+            {
+                return 0;
+            }
+            if (this.costSquareMeter > house.costSquareMeter)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
 }

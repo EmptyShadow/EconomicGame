@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using EconomicGame.src.Economic.Buildings;
-using System.Xml.Serialization;
+using System.Windows;
+using EconomicGame.src.Utils;
 
 namespace EconomicGame.src.Economic
 {
@@ -14,9 +11,11 @@ namespace EconomicGame.src.Economic
     public class Havings
     {
         /// <summary>
-        /// Здания входящие в имущество
+        /// Здания входящие в имущество,
+        /// ключ - координаты в строковом представлении (x,y),
+        /// значение - здание
         /// </summary>
-        List<Building> buildings;
+        Dictionary<string, Building> buildings;
 
         /// <summary>
         /// Конструктор имущества, в котором ничего нет
@@ -24,47 +23,23 @@ namespace EconomicGame.src.Economic
         public Havings() {}
 
         /// <summary>
-        /// Создать имущество с начальным списком зданий
+        /// Получить
         /// </summary>
-        /// <param name="building"></param>
-        public Havings(List<Building> building)
-        {
-            Building = building;
-        }
-
-        /// <summary>
-        /// Получить или установить имущество
-        /// </summary>
-        public IReadOnlyCollection<Building> Building
+        public Dictionary<string, Building>Building
         {
             get
             {
-                return buildings.AsReadOnly();
-            }
-            set
-            {
-                // Если еще не был определен список зданий
-                if (buildings == null && value != null)
-                {
-                    //, то определяем его
-                    buildings = new List<Building>();
-                    foreach(Building building in value)
-                    {
-                        // получаем копии зданий, для того чтобы никто не мог изменить конфигурацию извне
-                        // и получить более выгодное в игре здание
-                        buildings.Add((Building)building.Clone());
-                    }
-                }
+                return buildings;
             }
         }
 
-        public List<Building> GetCopyBuildings()
+        public Dictionary<string, Building> GetCopyBuildings()
         {
             if (buildings == null) return null;
-            List<Building> clone = new List<Buildings.Building>();
-            foreach(Building b in buildings)
+            Dictionary<string, Building> clone = new Dictionary<string, Building>();
+            foreach(KeyValuePair<string, Building> building in buildings)
             {
-                clone.Add((Building)b.Clone());
+                clone.Add(building.Key, (Building)building.Value.Clone());
             }
             return clone;
         }
@@ -72,25 +47,16 @@ namespace EconomicGame.src.Economic
         /// <summary>
         /// Добавить здание в список
         /// </summary>
+        /// <param name="p">Адрес здания</param>
         /// <param name="building"></param>
-        public void Add(Building building)
+        public void Add(Point p, Building building)
         {
             if (building == null) return;
             if (buildings == null)
             {
-                buildings = new List<Building>();
+                buildings = new Dictionary<string, Building>();
             }
-            buildings.Add(building);
-        }
-
-        /// <summary>
-        /// Получить список зданий для чтения
-        /// </summary>
-        /// <returns></returns>
-        public IReadOnlyCollection<Building> GetListBuildings()
-        {
-            // Вернуть колекцию списка для чтения
-            return buildings.AsReadOnly();
+            buildings.Add(ClassString.PointToString(p), building);
         }
     }
 }
