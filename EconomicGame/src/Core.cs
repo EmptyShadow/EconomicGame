@@ -23,23 +23,23 @@ namespace EconomicGame.src
         /// <summary>
         /// Жилые дома доступные для постройки
         /// </summary>
-        Havings houses;
+        List<House> houses;
 
         /// <summary>
         /// Магазины доступные для постройки
         /// </summary>
-        Havings markets;
+        List<Market> markets;
 
         /// <summary>
         /// Настройки игрового процесса
         /// </summary>
         Settings settings;
 
-        private Core(string nameSettings, string nameHouses, string nameMarkets)
+        private Core(string nameSettings)
         {
             settings = ResourсesLoaderXML.LoadSettings(nameSettings);
-            houses = ResourсesLoaderXML.LoadHavings(nameHouses);
-            markets = ResourсesLoaderXML.LoadHavings(nameMarkets);
+            houses = ResourсesLoaderXML.LoadHavingsHouse();
+            markets = ResourсesLoaderXML.LoadHavingsMarkets();
         }
 
         /// <summary>
@@ -56,29 +56,10 @@ namespace EconomicGame.src
                     return instance;
                 }
                 // иначе загрузить
-                instance = Load(ResourсesLoaderXML.DEF_SETTINGS, ResourсesLoaderXML.DEF_HOUSES, ResourсesLoaderXML.DEF_MARKETS);
+                instance = new Core(ResourсesLoaderXML.DEF_SETTINGS);
                 // и вернуть
                 return instance;
             }
-        }
-
-        /// <summary>
-        /// Загрузка ядра пользовательскими данными
-        /// </summary>
-        /// <param name="nameSettigs">Имя относительно Resources пользовательских настройкам</param>
-        /// <param name="nameHouses">Имя относительно Resources пользовательских жилых домов</param>
-        /// <param name="pahMarkets">Имя относительно Resources пользовательских магазинов</param>
-        /// <returns></returns>
-        public static Core Load(string nameSettigs, string nameHouses, string nameMarkets)
-        {
-            // Если ядро не загруженно
-            if (instance == null)
-            {
-                // , то загружаем пользовательскими данными
-                instance = new Core(nameSettigs, nameHouses, nameMarkets);
-            }
-            // , иначе возвращаем то, что установленно
-            return instance;
         }
 
         /// <summary>
@@ -99,7 +80,7 @@ namespace EconomicGame.src
         {
             get
             {
-                return houses.GetListBuildings();
+                return houses.AsReadOnly();
             }
         }
 
@@ -110,7 +91,7 @@ namespace EconomicGame.src
         {
             get
             {
-                return markets.GetListBuildings();
+                return markets.AsReadOnly();
             }
         }
     }

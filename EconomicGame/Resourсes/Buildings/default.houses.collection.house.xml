@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ArrayOfHouse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <House>
+    <Name>Example House 1</Name>
+    <BuldingPeriod>8</BuldingPeriod>
+    <Cost>5000000</Cost>
+    <IsFreeze>false</IsFreeze>
+    <CountCondo>500</CountCondo>
+    <AverageSquareMetersCondos>35</AverageSquareMetersCondos>
+  </House>
+  <House>
+    <Name>Example House 2</Name>
+    <BuldingPeriod>5</BuldingPeriod>
+    <Cost>3000000</Cost>
+    <IsFreeze>false</IsFreeze>
+    <CountCondo>100</CountCondo>
+    <AverageSquareMetersCondos>45</AverageSquareMetersCondos>
+  </House>
+</ArrayOfHouse>

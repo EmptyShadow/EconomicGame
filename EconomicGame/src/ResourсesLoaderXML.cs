@@ -3,6 +3,8 @@ using System.Xml;
 using EconomicGame.src.Economic;
 using System.Xml.Serialization;
 using System.IO;
+using System.Collections.Generic;
+using EconomicGame.src.Economic.Buildings;
 
 namespace EconomicGame.src
 {
@@ -25,19 +27,19 @@ namespace EconomicGame.src
         /// <summary>
         /// Директория имущества
         /// </summary>
-        public const string HEVINGS = "Hevings/";
+        public const string BUILDINGS = "Buildings/";
         /// <summary>
         /// Имя файла настроек по умолчанию
         /// </summary>
-        public const string DEF_SETTINGS = "default.settings.xml";
+        public const string DEF_SETTINGS = "default.settings";
         /// <summary>
         /// Имя файла имущества жилых зданий по умолчанию
         /// </summary>
-        public const string DEF_HOUSES = "default.houses.havings.xml";
+        public const string DEF_HOUSES = "default.houses.havings";
         /// <summary>
         /// Имя файла имущества магазинов по умолчанию
         /// </summary>
-        public const string DEF_MARKETS = "default.markets.havings.xml";
+        public const string DEF_MARKETS = "default.markets.havings";
 
         /// <summary>
         /// Загрузка из файла xml
@@ -47,7 +49,7 @@ namespace EconomicGame.src
         /// <returns></returns>
         public static T Load<T>(string name)
         {
-            string path = RESOURCES + name;
+            string path = RESOURCES + name + ".xml";
             // Сериализация в формате XML для типа данных T
             XmlSerializer formatter = new XmlSerializer(typeof(T));
 
@@ -55,7 +57,7 @@ namespace EconomicGame.src
             T type;
 
             // Пытаемся получить настройки из потока файла
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(path, FileMode.Open))
             {
                 type = (T)formatter.Deserialize(fs);
             }
@@ -134,8 +136,13 @@ namespace EconomicGame.src
         {
             // получаем позицию последней точки
             int lastPoint = fullPath.LastIndexOf('.');
+            string name = fullPath.Substring(lastPoint + 1);
+            if (name[name.Length - 1] == ']')
+            {
+                name = "collection." + name.Substring(0, name.Length - 1);
+            }
             // извлекаю из полного имени краткое имя класса
-            return fullPath.Substring(lastPoint + 1);
+            return name;
         }
 
         /// <summary>
@@ -180,46 +187,46 @@ namespace EconomicGame.src
         /// Получить список жилых домов доступных в игре по умолчанию
         /// </summary>
         /// <returns></returns>
-        public static Havings LoadHavingsHouse()
+        public static List<House> LoadHavingsHouse()
         {
-            return Load<Havings>(HEVINGS + "default.houses");
+            return Load<List<House>>(BUILDINGS + DEF_HOUSES);
         }
 
         /// <summary>
         /// Сохранить имущество жилых зданий по умолчанию
         /// </summary>
         /// <param name="houses"></param>
-        public static void SaveHavingsHouse(Havings houses)
+        public static void SaveHavingsHouse(List<House> houses)
         {
-            Save(HEVINGS + "default.houses", houses);
+            Save(BUILDINGS + "default.houses", houses);
         }
 
         /// <summary>
         /// Сохранить имущество магазинов по умолчанию
         /// </summary>
         /// <param name="houses"></param>
-        public static void SaveHavingsMarket(Havings markets)
+        public static void SaveHavingsMarket(List<Market> markets)
         {
-            Save(HEVINGS + "default.markets", markets);
+            Save(BUILDINGS + "default.markets", markets);
         }
 
         /// <summary>
         /// Получить список магазинов доступных в игре по умолчанию
         /// </summary>
         /// <returns></returns>
-        public static Havings LoadHavingsMarkets()
+        public static List<Market> LoadHavingsMarkets()
         {
-            return Load<Havings>(HEVINGS + "default.markets");
+            return Load<List<Market>>(BUILDINGS + DEF_MARKETS);
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Загрузить имущество из файла XML
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
         public static Havings LoadHavings(string name)
         {
-            return Load<Havings>(HEVINGS + name);
+            return Load<Havings>(BUILDINGS + name);
         }
 
         /// <summary>
@@ -229,7 +236,7 @@ namespace EconomicGame.src
         /// <returns></returns>
         public static void SaveHavings(string name, Havings havings)
         {
-            Save(HEVINGS + name, havings);
-        }
+            Save(BUILDINGS + name, havings);
+        }*/
     }
 }

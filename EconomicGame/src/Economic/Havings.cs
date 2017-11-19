@@ -8,7 +8,6 @@ using System.Xml.Serialization;
 
 namespace EconomicGame.src.Economic
 {
-    [Serializable]
     /// <summary>
     /// Имущество, собственность
     /// </summary>
@@ -33,16 +32,14 @@ namespace EconomicGame.src.Economic
             Building = building;
         }
 
-        [XmlElement(Type = typeof(House)),
-    XmlElement(Type = typeof(Market))]
         /// <summary>
         /// Получить или установить имущество
         /// </summary>
-        public List<Building> Building
+        public IReadOnlyCollection<Building> Building
         {
             get
             {
-                return GetCopyBuildings();
+                return buildings.AsReadOnly();
             }
             set
             {

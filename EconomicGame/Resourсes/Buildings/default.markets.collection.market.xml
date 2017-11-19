@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<Havings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<ArrayOfMarket xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Market>
     <Name>Example market 1</Name>
     <BuldingPeriod>1</BuldingPeriod>
     <Cost>100000</Cost>
     <IsFreeze>false</IsFreeze>
     <MaxProfit>50000</MaxProfit>
-    <ProcentCostInc>0.0005</ProcentCostInc>
+    <ProcentCostInc>0.05</ProcentCostInc>
   </Market>
   <Market>
     <Name>Example market 2</Name>
@@ -14,6 +14,6 @@
     <Cost>1000000</Cost>
     <IsFreeze>false</IsFreeze>
     <MaxProfit>500000</MaxProfit>
-    <ProcentCostInc>0.004</ProcentCostInc>
+    <ProcentCostInc>0.4</ProcentCostInc>
   </Market>
-</Havings>
+</ArrayOfMarket>
