@@ -35,11 +35,11 @@ namespace EconomicGame.src
         /// <summary>
         /// Имя файла имущества жилых зданий по умолчанию
         /// </summary>
-        public const string DEF_HOUSES = "default.houses.havings";
+        public const string DEF_HOUSES = "default.houses.collection.house";
         /// <summary>
         /// Имя файла имущества магазинов по умолчанию
         /// </summary>
-        public const string DEF_MARKETS = "default.markets.havings";
+        public const string DEF_MARKETS = "default.markets.collection.market";
 
         /// <summary>
         /// Загрузка из файла xml
