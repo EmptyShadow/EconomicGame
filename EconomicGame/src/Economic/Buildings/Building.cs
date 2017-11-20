@@ -189,7 +189,7 @@ namespace EconomicGame.src.Economic.Buildings
         public bool IsBuild()
         {
             // Если прошедшее время совподает с плановым временем строительства, то здание построенно
-            return curBuildingPeriod == buildingPeriod;
+            return curBuildingPeriod == buildingPeriod && !(freeze = false);
         }
 
         /// <summary>

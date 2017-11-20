@@ -40,9 +40,14 @@ namespace EconomicGame.src
         double levelSalesMarket;
 
         /// <summary>
-        /// Коэффициенты сезонов
+        /// Коэффициенты сезонов при продаже квартир
         /// </summary>
-        double[] coefsSeasons;
+        double[] coefsSeasonsHouse;
+
+        /// <summary>
+        /// Коэффициенты сезонов при продаже в магазинах
+        /// </summary>
+        double[] coefsSeasonsMarket;
 
         /// <summary>
         /// Граница благоприятного события
@@ -66,7 +71,8 @@ namespace EconomicGame.src
             uint startCapital, 
             Demand ordinaryDemandHouse, 
             double levelSalesMarket, 
-            double[] coefsSeasons, 
+            double[] coefsSeasonsHouse,
+            double[] coefsSeasonsMarket,
             double borderFavorableOutcome)
         {
             this.countPlayers = countPlayers;
@@ -74,7 +80,8 @@ namespace EconomicGame.src
             this.startCapital = startCapital;
             this.ordinaryDemandHouse = ordinaryDemandHouse;
             this.levelSalesMarket = levelSalesMarket;
-            this.coefsSeasons = coefsSeasons;
+            this.coefsSeasonsHouse = coefsSeasonsHouse;
+            this.coefsSeasonsMarket = coefsSeasonsMarket;
             this.borderFavorableOutcome = borderFavorableOutcome;
             // Проверяю все ли поля заполнены
             string emptyAtr = GetEmptyAtributes();
@@ -177,17 +184,35 @@ namespace EconomicGame.src
         /// <summary>
         /// Получить или установить коэффициенты сезонов
         /// </summary>
-        public double[] CoefsSeasons
+        public double[] CoefsSeasonsHouse
         {
             get
             {
-                return coefsSeasons;
+                return coefsSeasonsHouse;
             }
             set
             {
-                if (coefsSeasons == null && value != null && value.Length == 4)
+                if (coefsSeasonsHouse == null && value != null && value.Length == 4)
                 {
-                    coefsSeasons = value;
+                    coefsSeasonsHouse = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получить или установить коэффициенты сезонов
+        /// </summary>
+        public double[] CoefsSeasonsMarket
+        {
+            get
+            {
+                return coefsSeasonsMarket;
+            }
+            set
+            {
+                if (coefsSeasonsMarket == null && value != null && value.Length == 4)
+                {
+                    coefsSeasonsMarket = value;
                 }
             }
         }

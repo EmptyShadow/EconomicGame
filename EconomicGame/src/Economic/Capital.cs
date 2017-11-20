@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EconomicGame.src.Economic.Buildings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,6 +50,22 @@ namespace EconomicGame.src.Economic
             {
                 return things;
             }
+        }
+
+        /// <summary>
+        /// Полная стоимость капитала
+        /// </summary>
+        /// <returns></returns>
+        public uint CostCapital()
+        {
+            // деньги от продаж
+            uint cost = account.Balance;
+            // стоимость не построиных зданий, стоимости непроданных квартир в построенных домах и стоимость построенных магазинов
+            foreach (KeyValuePair<string, Building> building in things.Building)
+            {
+                cost += building.Value.GetCurCost();
+            }
+            return cost;
         }
     }
 }
