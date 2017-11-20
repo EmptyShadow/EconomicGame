@@ -17,6 +17,11 @@ namespace EconomicGame.src.Funds
         /// </summary>
         Capital capital;
 
+        /// <summary>
+        /// Реклама жилья
+        /// </summary>
+        public double PercentageAdvertisingHouse { get; set; } = 0.0;
+
         public BuildingFund()
         {
             capital = new Capital();

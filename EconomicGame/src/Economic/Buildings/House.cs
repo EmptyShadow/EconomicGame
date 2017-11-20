@@ -26,11 +26,11 @@ namespace EconomicGame.src.Economic.Buildings
         /// Среднее количество м^2 в квартире
         /// </summary>
         uint averageSquareMetersCondos;
-
+        
         /// <summary>
         /// Стоимость м^2
         /// </summary>
-        uint costSquareMeter;
+        public uint CostSquareMeter { get; set; }
 
         public House() { }
 
@@ -47,7 +47,7 @@ namespace EconomicGame.src.Economic.Buildings
             this.countСondo = countCondo;
             this.averageSquareMetersCondos = averageSquareMetersCondos;
             // получение начальной стоимости квадратного метра
-            costSquareMeter = GetPrimeCostPerSquareMeter();
+            CostSquareMeter = GetPrimeCostPerSquareMeter();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace EconomicGame.src.Economic.Buildings
                     countСondo = value;
                     if (cost != 0 && averageSquareMetersCondos != 0)
                     {
-                        costSquareMeter = GetPrimeCostPerSquareMeter();
+                        CostSquareMeter = GetPrimeCostPerSquareMeter();
                     }
                 }
             }
@@ -88,14 +88,14 @@ namespace EconomicGame.src.Economic.Buildings
                     averageSquareMetersCondos = value;
                     if (cost != 0 && countСondo != 0)
                     {
-                        costSquareMeter = GetPrimeCostPerSquareMeter();
+                        CostSquareMeter = GetPrimeCostPerSquareMeter();
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Общее количество квартир
+        /// Количество проданных квартир
         /// </summary>
         public uint CountSoldCondos
         {
@@ -149,7 +149,7 @@ namespace EconomicGame.src.Economic.Buildings
         /// </summary>
         /// <param name="count">Количество квартир</param>
         /// <returns>Сколько не продали квартир</returns>
-        public uint PrimeCondos(uint count)
+        public uint BuyCondos(uint count)
         {
             // Увеличиваем число проданых квартир
             countSoldCondo += count;
@@ -187,7 +187,7 @@ namespace EconomicGame.src.Economic.Buildings
             clone.costMonth = CostMonth;
             clone.curBuildingPeriod = curBuildingPeriod;
             clone.freeze = freeze;
-            clone.costSquareMeter = costSquareMeter;
+            clone.CostSquareMeter = CostSquareMeter;
             clone.countSoldCondo = countSoldCondo;
             return clone;
         }
@@ -199,7 +199,7 @@ namespace EconomicGame.src.Economic.Buildings
             {
                 return 0;
             }
-            if (this.costSquareMeter > house.costSquareMeter)
+            if (this.CostSquareMeter > house.CostSquareMeter)
             {
                 return 1;
             }

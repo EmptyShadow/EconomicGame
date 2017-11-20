@@ -7,6 +7,7 @@
     <CostThings>30000</CostThings>
     <CountThings>1</CountThings>
   </OrdinaryDemandHouse>
+  <CountSalesSquareMetersInMonth>1300</CountSalesSquareMetersInMonth>
   <LevelSalesMarket>0.7</LevelSalesMarket>
   <CoefsSeasonsHouse>
     <double>0.8</double>

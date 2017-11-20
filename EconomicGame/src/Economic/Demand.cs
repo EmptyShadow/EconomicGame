@@ -49,6 +49,15 @@ namespace EconomicGame.src.Economic
         }
 
         /// <summary>
+        /// Отношение цены к количеству
+        /// </summary>
+        /// <returns></returns>
+        public double RatioCostCount()
+        {
+            return costThing / countThings;
+        }
+
+        /// <summary>
         /// Получение или установка количество вещей, которое будет куплено
         /// </summary>
         public uint CountThings

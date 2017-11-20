@@ -35,6 +35,11 @@ namespace EconomicGame.src
         Demand ordinaryDemandHouse;
 
         /// <summary>
+        /// Обычное количество проданных квартир в месяц в микрорайоне
+        /// </summary>
+        uint countSalesSquareMetersInMonth;
+
+        /// <summary>
         /// Обычный уровень продаж в магазинах
         /// </summary>
         double levelSalesMarket;
@@ -159,6 +164,24 @@ namespace EconomicGame.src
                 if (ordinaryDemandHouse == null && value != null)
                 {
                     ordinaryDemandHouse = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Обычное количество проданных квартир в месяц
+        /// </summary>
+        public uint CountSalesSquareMetersInMonth
+        {
+            get
+            {
+                return countSalesSquareMetersInMonth;
+            }
+            set
+            {
+                if (countSalesSquareMetersInMonth == 0 && value != 0)
+                {
+                    countSalesSquareMetersInMonth = value;
                 }
             }
         }

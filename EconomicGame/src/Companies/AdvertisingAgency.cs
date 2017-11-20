@@ -30,41 +30,48 @@ namespace EconomicGame.src.Companies
         /// Цена рекламы за процент увеличения прибыли в магазинах
         /// </summary>
         public const uint COST_PERCENTAGE_OF_INCREASE_IN_MARKET = 500;
+
         /// <summary>
-        /// Реклама здания 
+        /// Реклама магазина 
         /// </summary>
         /// <param name="fund">Фонд</param>
         /// <param name="building">Здание</param>
         /// <param name="advertisingСosts">Затраты на рекламу здания</param>
-        public static void AdvertisingBuilding(BuildingFund fund, KeyValuePair<string, Building> building, uint advertisingСosts)
+        public static void AdvertisingMarket(BuildingFund fund, KeyValuePair<string, Building> market, uint advertisingСosts)
         {
             // Если здание принадлежит фонду
-            if (fund.Capital.Things.Building[building.Key] == building.Value)
+            if (fund.Capital.Things.Building[market.Key] == market.Value)
             {
-                // , то Если это жилой дом
-                if ((building.Value as House) != null)
-                {
-                    // Количество раз применения рекламы
-                    uint countAdvertising = advertisingСosts / COST_PERCENTAGE_OF_SALES_OF_CONDO;
-                    // Если размера затрат хватает на рекламу и платеж прошел
-                    if (countAdvertising != 0 && fund.Capital.Account.Withdraw(countAdvertising * COST_PERCENTAGE_OF_SALES_OF_CONDO) != 0)
-                    {
-                        // , то увеличивает процент от рекламы
-                        building.Value.PercentageAdvertising = countAdvertising * PERCENTAGE_OF_SALES_OF_CONDO;
-                    }
-                }
-                // , иначе Если магазин
-                if ((building.Value as Market) != null)
+                // Если магазин
+                if ((market.Value as Market) != null)
                 {
                     // Количество раз применения рекламы
                     uint countAdvertising = advertisingСosts / COST_PERCENTAGE_OF_INCREASE_IN_MARKET;
                     // Если размера затрат хватает на рекламу и платеж прошел
                     if (countAdvertising != 0 && fund.Capital.Account.Withdraw(countAdvertising * COST_PERCENTAGE_OF_INCREASE_IN_MARKET) != 0)
                     {
-                        // , то увеличивает процент от рекламы
-                        building.Value.PercentageAdvertising = countAdvertising * PERCENTAGE_OF_INCREASE_IN_MARKET;
+                        // , то увеличивает уровень продаж
+                        ((Market)market.Value).MaxProfit = (uint)(((Market)market.Value).MaxProfit * (1 + countAdvertising * PERCENTAGE_OF_INCREASE_IN_MARKET));
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Реклама жилья
+        /// </summary>
+        /// <param name="fund">Фонд</param>
+        /// <param name="building">Здание</param>
+        /// <param name="advertisingСosts">Затраты на рекламу здания</param>
+        public static void AdvertisingHouse(BuildingFund fund, uint advertisingСosts)
+        {
+            // Количество раз применения рекламы
+            uint countAdvertising = advertisingСosts / COST_PERCENTAGE_OF_SALES_OF_CONDO;
+            // Если размера затрат хватает на рекламу и платеж прошел
+            if (countAdvertising != 0 && fund.Capital.Account.Withdraw(countAdvertising * COST_PERCENTAGE_OF_SALES_OF_CONDO) != 0)
+            {
+                // , то увеличивает процент от рекламы
+                fund.PercentageAdvertisingHouse = countAdvertising * PERCENTAGE_OF_SALES_OF_CONDO;
             }
         }
     }

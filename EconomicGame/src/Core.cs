@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EconomicGame.src.Economic;
 using EconomicGame.src.Economic.Buildings;
+using EconomicGame.src;
 
 namespace EconomicGame.src
 {
@@ -15,6 +16,11 @@ namespace EconomicGame.src
     /// </summary>
     class Core
     {
+        /// <summary>
+        /// Текущий месяц
+        /// </summary>
+        static int curMonth = 1;
+
         /// <summary>
         /// Экземпляр ядра приложения
         /// </summary>
@@ -92,6 +98,40 @@ namespace EconomicGame.src
             get
             {
                 return markets.AsReadOnly();
+            }
+        }
+
+        /// <summary>
+        /// Текущий месяц
+        /// </summary>
+        public int GetCurMonth
+        {
+            get
+            {
+                return curMonth;
+            }
+        }
+
+        /// <summary>
+        /// Текущий сезон
+        /// </summary>
+        public Seasons GetCurSeason
+        {
+            get
+            {
+                return Season.GetSeasonByNumMonth(curMonth);
+            }
+        }
+
+        /// <summary>
+        /// Перейти к следующему месяцу
+        /// </summary>
+        public void NextMonth()
+        {
+            curMonth++;
+            if (curMonth > 12)
+            {
+                curMonth = 1;
             }
         }
     }

@@ -58,5 +58,19 @@ namespace EconomicGame.src.Economic
             }
             buildings.Add(ClassString.PointToString(p), building);
         }
+
+        public uint GetAllSalesSquareMeters()
+        {
+            uint count = 0;
+            foreach(KeyValuePair<string, Building> house in buildings)
+            {
+                House h = house.Value as House;
+                if (h != null)
+                {
+                    count += h.AverageSquareMetersCondos * h.GetCountNotSoldCondos();
+                }
+            }
+            return count;
+        }
     }
 }
