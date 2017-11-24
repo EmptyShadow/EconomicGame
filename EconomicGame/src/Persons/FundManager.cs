@@ -102,10 +102,29 @@ namespace EconomicGame.src.Persons
         /// </summary>
         public void BuilderPayment()
         {
+            // Обращаемся к застройщику для стоительства зданий
             BuildingBuilder.Build(Fund);
 
             // Оплатили строительство
             Payment = true;
+        }
+
+        /// <summary>
+        /// Закончить месяц (ход)
+        /// </summary>
+        public void FinishMonth()
+        {
+            Enable = false;
+        }
+
+        /// <summary>
+        /// Начать месяц (ход)
+        /// </summary>
+        public void StartMonth()
+        {
+            Enable = true;
+            Profit = false;
+            Payment = false;
         }
     }
 }
