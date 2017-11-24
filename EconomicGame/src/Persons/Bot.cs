@@ -20,5 +20,10 @@ namespace EconomicGame.src.Persons
         /// Создать нового бота
         /// </summary>
         public Bot() : base("Bot " + numberNextBot++) { }
+
+        public override void AddBuilding()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

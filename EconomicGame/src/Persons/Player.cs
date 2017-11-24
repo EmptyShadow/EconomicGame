@@ -16,5 +16,10 @@ namespace EconomicGame.src.Persons
         /// </summary>
         /// <param name="name"></param>
         public Player(string name) : base(name) { }
+
+        public override void AddBuilding()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

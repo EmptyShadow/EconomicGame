@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:EconomicGame"
         mc:Ignorable="d"
         Title="Экономическая игра" Height="350" Width="525" Visibility="Visible">
-    <Grid>
-        
-    </Grid>
+    <Grid/>
 </Window>
