@@ -25,6 +25,10 @@ namespace EconomicGame.src.Persons
         /// Активность
         /// </summary>
         public bool Enable { get; set; }
+
+        public bool Profit { get; set; } = false;
+
+        public bool Payment { get; set; } = false;
         
         /// <summary>
         /// Фонд, которым управляет управляющий
@@ -73,6 +77,7 @@ namespace EconomicGame.src.Persons
             foreach(KeyValuePair<string, Building> marketKV in Fund.Capital.Things.Building)
             {
                 Market market = marketKV.Value as Market;
+                // Если мы зашли в магазин
                 if (market != null)
                 {
                     // Возможна прибыль
@@ -88,6 +93,19 @@ namespace EconomicGame.src.Persons
                     Fund.Capital.Account.Deposite(profit);
                 }
             }
+            // прибыль получена
+            Profit = true;
+        }
+
+        /// <summary>
+        /// Оплатить строительство зданий в текущем месяце
+        /// </summary>
+        public void BuilderPayment()
+        {
+            BuildingBuilder.Build(Fund);
+
+            // Оплатили строительство
+            Payment = true;
         }
     }
 }
