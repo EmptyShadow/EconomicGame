@@ -11,6 +11,14 @@ namespace EconomicGame.src.Persons
     /// </summary>
     class Bot : FundManager
     {
+        /// <summary>
+        /// Номер нового бота
+        /// </summary>
+        static int numberNextBot = 0;
 
+        /// <summary>
+        /// Создать нового бота
+        /// </summary>
+        public Bot() : base("Bot " + numberNextBot++) { }
     }
 }

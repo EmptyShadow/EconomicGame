@@ -11,6 +11,10 @@ namespace EconomicGame.src.Persons
     /// </summary>
     class Player : FundManager
     {
-
+        /// <summary>
+        /// Создать нового игрока
+        /// </summary>
+        /// <param name="name"></param>
+        public Player(string name) : base(name) { }
     }
 }
