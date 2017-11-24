@@ -14,7 +14,7 @@ namespace EconomicGame.src.Persons
     /// <summary>
     /// Управляющий фондом
     /// </summary>
-    abstract class FundManager
+    class FundManager
     {
         /// <summary>
         /// Имя управляющего
@@ -130,6 +130,6 @@ namespace EconomicGame.src.Persons
         /// <summary>
         /// Добавить новое здание
         /// </summary>
-        public abstract void AddBuilding();
+        public virtual void AddBuilding(Building building) { }
     }
 }

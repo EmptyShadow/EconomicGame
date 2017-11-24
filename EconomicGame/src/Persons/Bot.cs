@@ -21,9 +21,12 @@ namespace EconomicGame.src.Persons
         /// </summary>
         public Bot() : base("Bot " + numberNextBot++) { }
 
-        public override void AddBuilding()
+        /// <summary>
+        /// Добавить случайное здание
+        /// </summary>
+        public void AddBuilding()
         {
-            throw new NotImplementedException();
+            //base.AddBuilding();
         }
     }
 }

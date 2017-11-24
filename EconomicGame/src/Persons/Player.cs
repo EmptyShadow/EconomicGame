@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EconomicGame.src.Economic.Buildings;
 
 namespace EconomicGame.src.Persons
 {
@@ -17,7 +18,11 @@ namespace EconomicGame.src.Persons
         /// <param name="name"></param>
         public Player(string name) : base(name) { }
 
-        public override void AddBuilding()
+        /// <summary>
+        /// Добавить здание
+        /// </summary>
+        /// <param name="building"></param>
+        public override void AddBuilding(Building building)
         {
             throw new NotImplementedException();
         }
