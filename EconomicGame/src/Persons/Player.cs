@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EconomicGame.src.Economic.Buildings;
+using EconomicGame.src.Companies;
 
 namespace EconomicGame.src.Persons
 {
@@ -22,9 +23,9 @@ namespace EconomicGame.src.Persons
         /// Добавить здание
         /// </summary>
         /// <param name="building"></param>
-        public override void AddBuilding(Building building)
+        public override void AddBuilding(KeyValuePair<System.Windows.Point, Building> building)
         {
-            throw new NotImplementedException();
+            BuildingBuilder.ApproveTheBuilding(Fund, building);
         }
     }
 }

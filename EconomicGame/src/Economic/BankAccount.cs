@@ -9,7 +9,7 @@ namespace EconomicGame.src.Economic
     /// <summary>
     /// Банковский счет
     /// </summary>
-    class BankAccount
+    public class BankAccount
     {
         /// <summary>
         /// Баланс

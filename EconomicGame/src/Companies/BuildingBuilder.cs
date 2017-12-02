@@ -59,26 +59,36 @@ namespace EconomicGame.src.Companies
         public static bool ApproveTheBuilding(BuildingFund fund, KeyValuePair<Point, Building> building)
         {
             // Если на месте предполагаемой постройки нет здания
-            if (fund.Capital.Things.Building[ClassString.PointToString(building.Key)] == null)
+            try
+            {
+                Building b = fund.Capital.Things.Building[ClassString.PointToString(building.Key)];
+                return false;
+            } catch (Exception e)
             {
                 // , то добавляем проект здания в журнал
                 fund.Capital.Things.Add(building.Key, building.Value);
                 // уведомляем соседей о будущей постройке
-                for (int i = (int)building.Key.X - 1; i <= building.Key.X - 1; i++)
-                    for (int j = (int)building.Key.Y - 1; j <= (int)building.Key.Y - 1; j++)
+                for (int i = (int)building.Key.X - 1; i <= building.Key.X + 1; i++)
+                    for (int j = (int)building.Key.Y - 1; j <= (int)building.Key.Y + 1; j++)
                     {
-                        string p = ClassString.PointToString(new Point(i, j));
-                        Building b = fund.Capital.Things.Building[p];
-                        // Если сосед управляет другим бизнесом и он есть
-                        if (b != null && b.GetType() != building.Value.GetType())
+                        try
                         {
-                            // , то уведомляем
-                            b.CountNeighbors++;
+                            string p = ClassString.PointToString(new Point(i, j));
+                            Building b = fund.Capital.Things.Building[p];
+                            // Если сосед управляет другим бизнесом и он есть
+                            if (b != null && b.GetType() != building.Value.GetType())
+                            {
+                                // , то уведомляем
+                                b.CountNeighbors++;
+                                building.Value.CountNeighbors++;
+                            }
+                        } catch (Exception exp)
+                        {
+
                         }
                     }
                 return true;
             }
-            return false;
         }
     }
 }

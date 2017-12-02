@@ -208,5 +208,33 @@ namespace EconomicGame.src.Economic.Buildings
                 return -1;
             }
         }
+
+        /// <summary>
+        /// Краткая информация
+        /// </summary>
+        /// <returns></returns>
+        public override string ShortInfo()
+        {
+            string s = base.ShortInfo();
+            s += "Количество квартир " + countСondo.ToString() + "\n";
+            s += "Себестоимость м^2 " + GetPrimeCostPerSquareMeter() + "\n";
+
+            return s;
+        }
+
+        /// <summary>
+        /// К строке
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            string s = base.ToString();
+            
+            s += "Количество проданных квартир " + countSoldCondo.ToString() + "\n";
+            s += "Среднее количество м^2 в квартире " + averageSquareMetersCondos.ToString() + "\n";
+            s += "Стоимость м^2 " + CostSquareMeter + "\n";
+
+            return s;
+        }
     }
 }

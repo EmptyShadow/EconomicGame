@@ -10,7 +10,7 @@ namespace EconomicGame.src.Economic
     /// <summary>
     /// Капитал
     /// </summary>
-    class Capital
+    public class Capital
     {
         /// <summary>
         /// Счет в банке, в котором лежат деньги

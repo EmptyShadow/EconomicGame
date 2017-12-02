@@ -219,5 +219,35 @@ namespace EconomicGame.src.Economic.Buildings
             clone.freeze = freeze;
             return clone;
         }
+
+        /// <summary>
+        /// Краткая информация
+        /// </summary>
+        /// <returns></returns>
+        public virtual string ShortInfo()
+        {
+            string s = name + "\n";
+            s += "Общий период строительства " + buildingPeriod.ToString() + "\n";
+            s += "Стоимость строительства " + cost.ToString() + "\n";
+            return s;
+        }
+
+        /// <summary>
+        /// К строке
+        /// </summary>
+        /// <returns></returns>
+        public virtual string ToString()
+        {
+            string s = ShortInfo();
+
+            s += "Плата за месяц строительства " + costMonth.ToString() + "\n";
+            s += "Прошедшее время с начала строительства " + curBuildingPeriod.ToString() + "\n";
+            s += (freeze ? "Строительство заморожено" : "Строится") + "\n";
+            s += "Количество выгодных соседей " + CountNeighbors + "\n";
+            s += (IsBuild() ? "Здание построенно" : "Здание строится") + "\n";
+
+
+            return s;
+        }
     }
 }

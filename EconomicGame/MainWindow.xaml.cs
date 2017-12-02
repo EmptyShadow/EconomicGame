@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using EconomicGame.src;
 using EconomicGame.src.Economic;
 using EconomicGame.src.Economic.Buildings;
+using EconomicGame.src.Views;
 
 namespace EconomicGame
 {
@@ -26,8 +27,7 @@ namespace EconomicGame
         public MainWindow()
         {
             InitializeComponent();
-            Core core = Core.Instanse;
-            Console.WriteLine();
+            Fund.Children.Add(new Map());
         }
     }
 }

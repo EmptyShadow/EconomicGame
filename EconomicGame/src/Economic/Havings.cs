@@ -20,7 +20,10 @@ namespace EconomicGame.src.Economic
         /// <summary>
         /// Конструктор имущества, в котором ничего нет
         /// </summary>
-        public Havings() {}
+        public Havings()
+        {
+            buildings = new Dictionary<string, Buildings.Building>();
+        }
 
         /// <summary>
         /// Получить

@@ -21,6 +21,25 @@ namespace EconomicGame.src.Utils
         {
             return "(" + p.X.ToString() + "," + p.Y.ToString() + ")";
         }
+
+        /// <summary>
+        /// По строке получить точку
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public static Point StringToPoint(string address)
+        {
+            try
+            {
+                address.Replace(" ", "");
+                return new Point(Int32.Parse(address[1].ToString()), Int32.Parse(address[3].ToString()));
+            } catch(Exception e)
+            {
+                return new Point(-1, -1);
+            }
+
+        }
+
         /// <summary>
         /// Получить путь к файлу с окончанием имени файла (имя класса + .xml)
         /// </summary>

@@ -103,5 +103,17 @@ namespace EconomicGame.src.Economic.Buildings
             return clone;
         }
 
+        /// Краткая информация
+        /// </summary>
+        /// <returns></returns>
+        public override string ShortInfo()
+        {
+            string s = base.ShortInfo();
+
+            s += "Максимальный объем прибыли магазина в месяц " + maxProfit.ToString() + "\n";
+            s += "Процент увеличения стоимости здания после постройки " + procentCostInc.ToString() + "\n";
+
+            return s;
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace EconomicGame.src.Funds
     /// <summary>
     /// Фонд по строительству зданий в микрорайоне
     /// </summary>
-    class BuildingFund
+    public class BuildingFund
     {
         /// <summary>
         /// Капитал фонда

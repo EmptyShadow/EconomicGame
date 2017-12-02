@@ -14,7 +14,7 @@ namespace EconomicGame.src
     /// Список игроков.
     /// Ядро реализует шаблон проектирования Singleton
     /// </summary>
-    class Core
+    public class Core
     {
         /// <summary>
         /// Текущий месяц
@@ -133,6 +133,19 @@ namespace EconomicGame.src
             {
                 curMonth = 1;
             }
+        }
+
+        /// <summary>
+        /// Отчистить ядро приложения
+        /// </summary>
+        public void Clear()
+        {
+            instance = null;
+            settings = null;
+            houses.Clear();
+            houses = null;
+            markets.Clear();
+            markets = null;
         }
     }
 }

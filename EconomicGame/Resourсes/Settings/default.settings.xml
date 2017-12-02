@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <CountPlayers>5</CountPlayers>
-  <CountStaps>36</CountStaps>
-  <StartCapital>37000000</StartCapital>
+  <CountPlayers>3</CountPlayers>
+  <CountStaps>5</CountStaps>
+  <StartCapital>60000000</StartCapital>
   <OrdinaryDemandHouse>
-    <CostThings>30000</CostThings>
+    <CostThings>25000</CostThings>
     <CountThings>1</CountThings>
   </OrdinaryDemandHouse>
-  <CountSalesSquareMetersInMonth>1300</CountSalesSquareMetersInMonth>
-  <LevelSalesMarket>0.7</LevelSalesMarket>
+  <CountSalesSquareMetersInMonth>3000</CountSalesSquareMetersInMonth>
+  <LevelSalesMarket>0.8</LevelSalesMarket>
   <CoefsSeasonsHouse>
     <double>0.8</double>
     <double>0.7</double>
     <double>0.8</double>
     <double>1.1</double>
-  </CoefsSeasons>
+  </CoefsSeasonsHouse>
   <CoefsSeasonsMarket>
     <double>1.3</double>
-    <double>1.0</double>
+    <double>1</double>
     <double>0.9</double>
     <double>0.8</double>
-  </CoefsSeasons>
+  </CoefsSeasonsMarket>
   <BorderFavorableOutcome>0.8</BorderFavorableOutcome>
 </Settings>

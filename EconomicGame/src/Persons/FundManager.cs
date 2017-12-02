@@ -14,7 +14,7 @@ namespace EconomicGame.src.Persons
     /// <summary>
     /// Управляющий фондом
     /// </summary>
-    class FundManager
+    public class FundManager
     {
         /// <summary>
         /// Имя управляющего
@@ -42,6 +42,7 @@ namespace EconomicGame.src.Persons
         public FundManager(string name)
         {
             Name = name;
+            Fund = new BuildingFund();
             // Нового пользователя блокируем пока не настанет его очередь ходить
             Enable = false;
         }
@@ -66,8 +67,9 @@ namespace EconomicGame.src.Persons
         /// <summary>
         /// Получить прибыль от продажи в магазинах
         /// Учитываются проценты
-        /// 1) сезон года
-        /// 2) соседние жилые здания
+        /// 1) обычный уровень продаж в магазинах
+        /// 2) сезон года
+        /// 3) соседние жилые здания
         /// </summary>
         public void MakeProfitTheSaleInMarkets()
         {
@@ -81,7 +83,7 @@ namespace EconomicGame.src.Persons
                 if (market != null)
                 {
                     // Возможна прибыль
-                    uint profit = market.MaxProfit;
+                    uint profit = (uint)((double)market.MaxProfit * core.GetSettings.LevelSalesMarket);
 
                     // Учитываем процент сезона года
                     profit = (uint)(profit * core.GetSettings.CoefsSeasonsMarket[(int)core.GetCurSeason]);
@@ -112,9 +114,16 @@ namespace EconomicGame.src.Persons
         /// <summary>
         /// Закончить месяц (ход)
         /// </summary>
-        public void FinishMonth()
+        public void FinishMonth(Dictionary<System.Windows.Point, Building> listNewBuilding)
         {
             Enable = false;
+
+            BuilderPayment();
+
+            foreach (KeyValuePair<System.Windows.Point, Building> building in listNewBuilding)
+            {
+                AddBuilding(building);
+            }
         }
 
         /// <summary>
@@ -125,11 +134,13 @@ namespace EconomicGame.src.Persons
             Enable = true;
             Profit = false;
             Payment = false;
+
+            MakeProfit();
         }
 
         /// <summary>
         /// Добавить новое здание
         /// </summary>
-        public virtual void AddBuilding(Building building) { }
+        public virtual void AddBuilding(KeyValuePair<System.Windows.Point, Building> building) { }
     }
 }

@@ -74,7 +74,8 @@ namespace EconomicGame.src
         public Settings(uint countPlayers, 
             uint countStaps,
             uint startCapital, 
-            Demand ordinaryDemandHouse, 
+            Demand ordinaryDemandHouse,
+            uint countSalesSquareMetersInMonth,
             double levelSalesMarket, 
             double[] coefsSeasonsHouse,
             double[] coefsSeasonsMarket,
@@ -84,6 +85,7 @@ namespace EconomicGame.src
             this.countStaps = countStaps;
             this.startCapital = startCapital;
             this.ordinaryDemandHouse = ordinaryDemandHouse;
+            CountSalesSquareMetersInMonth = countSalesSquareMetersInMonth;
             this.levelSalesMarket = levelSalesMarket;
             this.coefsSeasonsHouse = coefsSeasonsHouse;
             this.coefsSeasonsMarket = coefsSeasonsMarket;

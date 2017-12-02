@@ -80,7 +80,7 @@ namespace EconomicGame.src
             string path = RESOURCES + name + "." + ClassString.GetNameClass(obj) + ".xml";
 
             // Используем новый поток файла для записи объекта
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(path, FileMode.Create))
             {
                 formatter.Serialize(fs, obj);
             }

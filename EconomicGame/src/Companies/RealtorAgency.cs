@@ -24,7 +24,7 @@ namespace EconomicGame.src.Companies
             // Количество кв. в продаже в продаже
             uint countAllSales = fund.Capital.Things.GetAllSalesSquareMeters();
             // Уровень продаж (количество возможно проданных кв. метров) в текущем месяце
-            int countSalesSquareMetersInMonth = (int)(core.GetSettings.CountSalesSquareMetersInMonth * core.GetSettings.CoefsSeasonsHouse[(int)(core.GetCurSeason)] * (1 + fund.PercentageAdvertisingHouse));
+            int countSalesSquareMetersInMonth = (int)(core.GetSettings.CountSalesSquareMetersInMonth * core.GetSettings.CoefsSeasonsHouse[(int)(core.GetCurSeason - 1)] * (1 + fund.PercentageAdvertisingHouse));
             fund.PercentageAdvertisingHouse = 0.0;
 
             // Если Предложение превышает или удволитворяет спрос

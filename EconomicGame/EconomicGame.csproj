@@ -36,6 +36,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -50,10 +52,13 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="src\Companies\AdvertisingAgency.cs" />
     <Compile Include="src\Companies\BuildingBuilder.cs" />
     <Compile Include="src\Companies\RealtorAgency.cs" />
@@ -77,17 +82,41 @@
     <Compile Include="src\Utils\ITest.cs" />
     <Compile Include="src\Utils\ResultTest.cs" />
     <Compile Include="src\Utils\TestAll.cs" />
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="src\Views\BuildingControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="src\Views\BuildingControl.Designer.cs">
+      <DependentUpon>BuildingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\FormBuilding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\FormBuilding.Designer.cs">
+      <DependentUpon>FormBuilding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\FormUpgradeSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\FormUpgradeSettings.Designer.cs">
+      <DependentUpon>FormUpgradeSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\FundManagerPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\FundManagerPanel.Designer.cs">
+      <DependentUpon>FundManagerPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Map.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Map.Designer.cs">
+      <DependentUpon>Map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\StartMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\StartMenu.Designer.cs">
+      <DependentUpon>StartMenu.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -104,17 +133,35 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\BuildingControl.resx">
+      <DependentUpon>BuildingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\FormBuilding.resx">
+      <DependentUpon>FormBuilding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\FormUpgradeSettings.resx">
+      <DependentUpon>FormUpgradeSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\FundManagerPanel.resx">
+      <DependentUpon>FundManagerPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Map.resx">
+      <DependentUpon>Map.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\StartMenu.resx">
+      <DependentUpon>StartMenu.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
