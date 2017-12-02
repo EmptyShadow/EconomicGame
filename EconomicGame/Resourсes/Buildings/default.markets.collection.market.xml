@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ArrayOfMarket xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Market>
-    <Name>Example market 1</Name>
+    <Name>Ларек</Name>
     <BuldingPeriod>1</BuldingPeriod>
     <Cost>100000</Cost>
     <IsFreeze>false</IsFreeze>
@@ -9,11 +9,27 @@
     <ProcentCostInc>0.05</ProcentCostInc>
   </Market>
   <Market>
-    <Name>Example market 2</Name>
-    <BuldingPeriod>3</BuldingPeriod>
+    <Name>Магазин</Name>
+    <BuldingPeriod>2</BuldingPeriod>
     <Cost>1000000</Cost>
     <IsFreeze>false</IsFreeze>
     <MaxProfit>500000</MaxProfit>
     <ProcentCostInc>0.4</ProcentCostInc>
+  </Market>
+  <Market>
+    <Name>Супермаркет</Name>
+    <BuldingPeriod>4</BuldingPeriod>
+    <Cost>2000000</Cost>
+    <IsFreeze>false</IsFreeze>
+    <MaxProfit>1000000</MaxProfit>
+    <ProcentCostInc>0.5</ProcentCostInc>
+  </Market>
+  <Market>
+    <Name>Гипермаркет</Name>
+    <BuldingPeriod>6</BuldingPeriod>
+    <Cost>4000000</Cost>
+    <IsFreeze>false</IsFreeze>
+    <MaxProfit>2000000</MaxProfit>
+    <ProcentCostInc>0.7</ProcentCostInc>
   </Market>
 </ArrayOfMarket>

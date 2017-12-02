@@ -1,19 +1,35 @@
 <?xml version="1.0"?>
 <ArrayOfHouse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <House>
-    <Name>Example House 1</Name>
-    <BuldingPeriod>8</BuldingPeriod>
-    <Cost>5000000</Cost>
+    <Name>Малоквартирный дом</Name>
+    <BuldingPeriod>3</BuldingPeriod>
+    <Cost>20000000</Cost>
     <IsFreeze>false</IsFreeze>
-    <CountCondo>500</CountCondo>
+    <CountCondo>100</CountCondo>
     <AverageSquareMetersCondos>35</AverageSquareMetersCondos>
   </House>
   <House>
-    <Name>Example House 2</Name>
+    <Name>Многоэтажный дом</Name>
     <BuldingPeriod>5</BuldingPeriod>
-    <Cost>3000000</Cost>
+    <Cost>30000000</Cost>
     <IsFreeze>false</IsFreeze>
-    <CountCondo>100</CountCondo>
+    <CountCondo>200</CountCondo>
     <AverageSquareMetersCondos>45</AverageSquareMetersCondos>
+  </House>
+  <House>
+    <Name>Многоэтажный дом с отделкой</Name>
+    <BuldingPeriod>7</BuldingPeriod>
+    <Cost>32000000</Cost>
+    <IsFreeze>false</IsFreeze>
+    <CountCondo>250</CountCondo>
+    <AverageSquareMetersCondos>50</AverageSquareMetersCondos>
+  </House>
+  <House>
+    <Name>Хрущевка</Name>
+    <BuldingPeriod>5</BuldingPeriod>
+    <Cost>10000000</Cost>
+    <IsFreeze>false</IsFreeze>
+    <CountCondo>200</CountCondo>
+    <AverageSquareMetersCondos>25</AverageSquareMetersCondos>
   </House>
 </ArrayOfHouse>
