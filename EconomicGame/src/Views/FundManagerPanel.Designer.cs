@@ -37,6 +37,7 @@
             this.groupBoxPlayer = new System.Windows.Forms.GroupBox();
             this.labelCapital = new System.Windows.Forms.Label();
             this.labelBankAccountBalance = new System.Windows.Forms.Label();
+            this.buttonShowFormAdvertisingAgency = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -72,7 +73,7 @@
             this.groupBox2.Controls.Add(this.labelCountCurMonth);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 73);
+            this.groupBox2.Location = new System.Drawing.Point(0, 106);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(189, 128);
             this.groupBox2.TabIndex = 1;
@@ -130,13 +131,14 @@
             // groupBoxPlayer
             // 
             this.groupBoxPlayer.AutoSize = true;
+            this.groupBoxPlayer.Controls.Add(this.buttonShowFormAdvertisingAgency);
             this.groupBoxPlayer.Controls.Add(this.labelCapital);
             this.groupBoxPlayer.Controls.Add(this.labelBankAccountBalance);
             this.groupBoxPlayer.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBoxPlayer.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBoxPlayer.Location = new System.Drawing.Point(0, 0);
             this.groupBoxPlayer.Name = "groupBoxPlayer";
-            this.groupBoxPlayer.Size = new System.Drawing.Size(189, 73);
+            this.groupBoxPlayer.Size = new System.Drawing.Size(189, 106);
             this.groupBoxPlayer.TabIndex = 0;
             this.groupBoxPlayer.TabStop = false;
             this.groupBoxPlayer.Text = "groupBox1";
@@ -162,6 +164,21 @@
             this.labelBankAccountBalance.Size = new System.Drawing.Size(60, 22);
             this.labelBankAccountBalance.TabIndex = 0;
             this.labelBankAccountBalance.Text = "label1";
+            // 
+            // buttonShowFormAdvertisingAgency
+            // 
+            this.buttonShowFormAdvertisingAgency.AutoSize = true;
+            this.buttonShowFormAdvertisingAgency.BackColor = System.Drawing.Color.RoyalBlue;
+            this.buttonShowFormAdvertisingAgency.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonShowFormAdvertisingAgency.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonShowFormAdvertisingAgency.ForeColor = System.Drawing.Color.Gold;
+            this.buttonShowFormAdvertisingAgency.Location = new System.Drawing.Point(3, 70);
+            this.buttonShowFormAdvertisingAgency.Name = "buttonShowFormAdvertisingAgency";
+            this.buttonShowFormAdvertisingAgency.Size = new System.Drawing.Size(183, 33);
+            this.buttonShowFormAdvertisingAgency.TabIndex = 6;
+            this.buttonShowFormAdvertisingAgency.Text = "Реклама";
+            this.buttonShowFormAdvertisingAgency.UseVisualStyleBackColor = false;
+            this.buttonShowFormAdvertisingAgency.Click += new System.EventHandler(this.buttonShowFormAdvertisingAgency_Click);
             // 
             // FundManagerPanel
             // 
@@ -195,5 +212,6 @@
         private System.Windows.Forms.Label labelCountCurMonth;
         private System.Windows.Forms.Label labelCapital;
         private System.Windows.Forms.Label labelBankAccountBalance;
+        private System.Windows.Forms.Button buttonShowFormAdvertisingAgency;
     }
 }

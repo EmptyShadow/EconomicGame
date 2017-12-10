@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EconomicGame.src.Economic;
 using EconomicGame.src.Economic.Buildings;
 using EconomicGame.src.Funds;
@@ -42,11 +39,13 @@ namespace EconomicGame.src.Companies
             {
                 // генерируем случайное событие
                 ProbabilisticEvent probEvent = new ProbabilisticEvent();
-                if (probEvent.IsGood)
+                if (!probEvent.IsGood)
                 {
-                    // , то построить
-                    building.NextStageBuilding();
+                    // задержать строительство
+                    building.DelayBuilding();
                 }
+                // перейти к новому месяцу
+                building.NextStageBuilding();
             }
         }
 

@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EconomicGame.src.Economic;
+﻿using System.Collections.Generic;
 using EconomicGame.src.Economic.Buildings;
-using EconomicGame.src;
 
 namespace EconomicGame.src
 {
@@ -129,10 +123,6 @@ namespace EconomicGame.src
         public void NextMonth()
         {
             curMonth++;
-            if (curMonth > 12)
-            {
-                curMonth = 1;
-            }
         }
 
         /// <summary>

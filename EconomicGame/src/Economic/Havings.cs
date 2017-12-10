@@ -26,9 +26,9 @@ namespace EconomicGame.src.Economic
         }
 
         /// <summary>
-        /// Получить
+        /// Получить карту зданий
         /// </summary>
-        public Dictionary<string, Building>Building
+        public Dictionary<string, Building> Building
         {
             get
             {
@@ -36,6 +36,10 @@ namespace EconomicGame.src.Economic
             }
         }
 
+        /// <summary>
+        /// Получить копию карты зданий
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<string, Building> GetCopyBuildings()
         {
             if (buildings == null) return null;
@@ -62,6 +66,10 @@ namespace EconomicGame.src.Economic
             buildings.Add(ClassString.PointToString(p), building);
         }
 
+        /// <summary>
+        /// Получить все количество кв. м. продающихся сейчас
+        /// </summary>
+        /// <returns></returns>
         public uint GetAllSalesSquareMeters()
         {
             uint count = 0;

@@ -1,9 +1,5 @@
 ﻿using EconomicGame.src.Economic.Buildings;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EconomicGame.src.Economic
 {
@@ -66,6 +62,23 @@ namespace EconomicGame.src.Economic
                 cost += building.Value.GetCurCost();
             }
             return cost;
+        }
+
+        /// <summary>
+        /// Получить карту магазинов
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, Building> GetMarkets()
+        {
+            Dictionary<string, Building> list = new Dictionary<string, Building>();
+            foreach(KeyValuePair<string, Building> building in Things.Building)
+            {
+                if (building.Value as Market != null)
+                {
+                    list.Add(building.Key, building.Value);
+                }
+            }
+            return list;
         }
     }
 }

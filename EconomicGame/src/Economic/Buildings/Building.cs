@@ -182,6 +182,9 @@ namespace EconomicGame.src.Economic.Buildings
             buildingPeriod++;
         }
 
+        /// <summary>
+        /// Новый период строительства здания
+        /// </summary>
         public void NextStageBuilding()
         {
             // Увеличить процесс постройки

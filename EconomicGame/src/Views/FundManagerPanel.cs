@@ -92,5 +92,12 @@ namespace EconomicGame.src.Views
                 map.UpdateMap();
             }
         }
+
+        private void buttonShowFormAdvertisingAgency_Click(object sender, EventArgs e)
+        {
+            FormAdvertisingAgency form = new FormAdvertisingAgency(manager.Fund);
+            form.Updater = UpdatePlayerInfo;
+            form.Show();
+        }
     }
 }

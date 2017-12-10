@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using EconomicGame.src.Companies;
 using EconomicGame.src.Economic.Buildings;
-using EconomicGame.src;
 
 using EconomicGame.src.Funds; // фонды
 
@@ -26,8 +21,14 @@ namespace EconomicGame.src.Persons
         /// </summary>
         public bool Enable { get; set; }
 
+        /// <summary>
+        /// Статус получения прибыли
+        /// </summary>
         public bool Profit { get; set; } = false;
 
+        /// <summary>
+        /// Статус оплаты расходов
+        /// </summary>
         public bool Payment { get; set; } = false;
         
         /// <summary>
@@ -86,7 +87,7 @@ namespace EconomicGame.src.Persons
                     uint profit = (uint)((double)market.MaxProfit * core.GetSettings.LevelSalesMarket);
 
                     // Учитываем процент сезона года
-                    profit = (uint)(profit * core.GetSettings.CoefsSeasonsMarket[(int)core.GetCurSeason]);
+                    profit = (uint)(profit * core.GetSettings.CoefsSeasonsMarket[(int)core.GetCurSeason - 1]);
 
                     // Учитываем процент соседей
                     profit = (uint)(profit * market.CountNeighbors / 8.0);
